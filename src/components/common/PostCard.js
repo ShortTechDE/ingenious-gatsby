@@ -8,9 +8,9 @@ const PostCard = ({ post }) => {
   return (
     <article className="article" data-aos="fade-up" data-aos-duration="800" data-aos-easing="ease-out-cubic"
       data-aos-delay="100">
-      {post.feature_image && <Link to={url}><img className="thumbnail" src={post.feature_image} alt={post.title} /></Link>}
+      {post.feature_image ? <Link to={url}><img className="thumbnail" src={post.feature_image} alt={post.title} /></Link> : null}
       <div className="content">
-        {post.primary_tag && <Link to={post.primary_tag.url} className="category">{post.primary_tag.name}</Link>}
+        {post.primary_tag ? <Link to={post.primary_tag.slug} className="category">{post.primary_tag.name}</Link> : null}
         <h1 className="title">{post.title}</h1>
         <p className="text-preview">
           {post.excerpt}
