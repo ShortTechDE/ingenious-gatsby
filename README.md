@@ -12,7 +12,7 @@ npm install -g yarn
 Clone the GitHub repository with `git clone`.
 ```
 git clone https://github.com/ShortTechDE/ingenious-gatsby.git
-cd ingenious-gatsby.git
+cd ingenious-gatsby
 ```
 
 Install the dependencies with `yarn`.
