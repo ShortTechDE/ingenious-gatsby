@@ -2,70 +2,76 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
 * Single post view (/:slug)
-*
-* This file renders a single post and loads all the content.
-*
 */
 const Post = ({ data, location }) => {
-    const post = data.ghostPost
+  const post = data.ghostPost
+  const readingTime = readingTimeHelper(post)
 
-    return (
-        <>
-            <MetaData
-                data={data}
-                location={location}
-                type="article"
-            />
-            <Helmet>
-                <style type="text/css">{`${post.codeinjection_styles}`}</style>
-            </Helmet>
-            <Layout>
-                <div className="container">
-                    <article className="content">
-                        { post.feature_image ?
-                            <figure className="post-feature-image">
-                                <img src={ post.feature_image } alt={ post.title } />
-                            </figure> : null }
-                        <section className="post-full-content">
-                            <h1 className="content-title">{post.title}</h1>
-
-                            {/* The main post content */ }
-                            <section
-                                className="content-body load-external-scripts"
-                                dangerouslySetInnerHTML={{ __html: post.html }}
-                            />
-                        </section>
-                    </article>
-                </div>
-            </Layout>
-        </>
-    )
+  return (
+    <>
+      <MetaData
+        data={data}
+        location={location}
+        type="article"
+      />
+      <Helmet>
+        <style type="text/css">{`${post.codeinjection_styles}`}</style>
+      </Helmet>
+      <Layout>
+        <header className="page-header article"
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + post.feature_image + ")  no-repeat center / cover, #111111" }}>
+          <div className="content container">
+            <div className="meta">
+              <span className="date">{post.published_at_pretty}</span>
+              <span className="category">
+                <a href="{{url}}">Tag
+                </a>
+              </span>
+              <span className="readingtime">{readingTime}</span>
+            </div>
+            <h1 className="headline">{post.title}</h1>
+            <div className="authors">
+              von Autoren
+            </div>
+          </div>
+          <figure className="wave"></figure>
+        </header>
+        <section className="article container">
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </section>
+      </Layout>
+    </>
+  )
 }
 
 Post.propTypes = {
-    data: PropTypes.shape({
-        ghostPost: PropTypes.shape({
-            codeinjection_styles: PropTypes.object,
-            title: PropTypes.string.isRequired,
-            html: PropTypes.string.isRequired,
-            feature_image: PropTypes.string,
-        }).isRequired,
+  data: PropTypes.shape({
+    ghostPost: PropTypes.shape({
+      codeinjection_styles: PropTypes.object,
+      title: PropTypes.string.isRequired,
+      html: PropTypes.string.isRequired,
+      feature_image: PropTypes.string,
     }).isRequired,
-    location: PropTypes.object.isRequired,
+  }).isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 export default Post
 
 export const postQuery = graphql`
-    query($slug: String!) {
-        ghostPost(slug: { eq: $slug }) {
-            ...GhostPostFields
-        }
+  query($slug: String!) {
+    ghostPost(slug: { eq: $slug }) {
+      ...GhostPostFields
     }
+  }
 `
