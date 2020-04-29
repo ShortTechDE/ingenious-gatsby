@@ -25,6 +25,27 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <body className={bodyClass} />
       </Helmet>
 
+      <input type="checkbox" id="gn-menustate" className="gn-menustate" />
+
+      <nav id="globalnav">
+        <div className="content container">
+          <Link className="brand" href="/">
+            <span className="name">{site.title}</span>
+          </Link>
+          <div className="menu">
+            <label className="menuicon" for="gn-menustate" aria-hidden="true">
+              <span className="bread bread-top">
+                <span className="crust crust-top"></span>
+              </span>
+              <span className="bread bread-bottom">
+                <span className="crust crust-bottom"></span>
+              </span>
+            </label>
+            <Navigation data={site.navigation} />
+          </div>
+        </div>
+      </nav>
+
       <main>
         {children}
       </main>
