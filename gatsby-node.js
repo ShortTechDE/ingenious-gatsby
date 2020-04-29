@@ -113,9 +113,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const totalPosts = node.postCount !== null ? node.postCount : 0
     const numberOfPages = Math.ceil(totalPosts / postsPerPage)
 
-    // This part here defines, that our author pages will use
-    // a `/author/:slug/` permalink.
-    node.url = `/author/${node.slug}/`
+    node.url = `/autor/${node.slug}/`
 
     Array.from({ length: numberOfPages }).forEach((_, i) => {
       const currentPage = i + 1
