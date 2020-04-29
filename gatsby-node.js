@@ -72,7 +72,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // This part here defines, that our tag pages will use
     // a `/tag/:slug/` permalink.
-    node.url = `/tag/${node.slug}/`
+    node.url = `/${node.slug}/`
 
     Array.from({ length: numberOfPages }).forEach((_, i) => {
       const currentPage = i + 1
