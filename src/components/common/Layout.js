@@ -2,11 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-
 import { Navigation } from '.'
-import config from '../../utils/siteConfig'
-
 import packageJson from '../../../package.json'
 
 // Styles
