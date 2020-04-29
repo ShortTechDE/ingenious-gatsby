@@ -13,7 +13,7 @@ const PostCard = ({ post }) => {
         {post.primary_tag && <Link to={post.primary_tag.url} className="category">{post.primary_tag.name}</Link>}
         <h1 className="title">{post.title}</h1>
         <p className="text-preview">
-          {post.excerp}
+          {post.excerpt}
         </p>
       </div>
       <Link to={url} className="button dark">Lesen</Link>
