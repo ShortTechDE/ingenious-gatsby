@@ -38,7 +38,7 @@ const Post = ({ data, location }) => {
             </div>
             <h1 className="headline">{post.title}</h1>
             <div className="authors">
-              von Autoren
+              von <Link to={`/autor/${post.primary_author.slug}/`}>{post.primary_author.name}</Link>
             </div>
           </div>
           <figure className="wave"></figure>
