@@ -1,59 +1,82 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
-import { Layout, PostCard, Pagination } from '../components/common'
+import { Layout, PostList, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
-/**
-* Main index page (home page)
-*
-* Loads all posts from Ghost and uses pagination to navigate through them.
-* The number of posts that should appear per page can be setup
-* in /utils/siteConfig.js under `postsPerPage`.
-*
-*/
 const Index = ({ data, location, pageContext }) => {
-    const posts = data.allGhostPost.edges
+  const posts = data.posts.edges
+  const featuredPost = data.featured.edges || data.recent.edges
 
-    return (
-        <>
-            <MetaData location={location} />
-            <Layout isHome={true}>
-                <div className="container">
-                    <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
-                    </section>
-                    <Pagination pageContext={pageContext} />
-                </div>
-            </Layout>
-        </>
-    )
+  return (
+    <>
+      <MetaData location={location} />
+      <Layout isHome={true}>
+        {featuredPost.map(({ node }) => (
+          <header className="page-header top-story"
+            style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + node.feature_image + ")  no-repeat center / cover, #111111" }}>
+            <div className="content container">
+              <h1 className="headline">{node.title}</h1>
+              <Link className="button" to={`/${node.slug}/`}>Lesen</Link>
+            </div>
+            <figure className="wave"></figure>
+          </header>
+        ))}
+        <main className="container overlap-with-header" id="content-view">
+          <PostList posts={posts} />
+        </main>
+      </Layout>
+    </>
+  )
 }
 
 Index.propTypes = {
-    data: PropTypes.shape({
-        allGhostPost: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    posts: PropTypes.shape({
+      allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
+    featured: PropTypes.shape({
+      allGhostPost: PropTypes.object.isRequired,
     }).isRequired,
-    pageContext: PropTypes.object,
+    recent: PropTypes.shape({
+      allGhostPost: PropTypes.object.isRequired,
+    }).isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  pageContext: PropTypes.object,
 }
 
 export default Index
 
-// This page query loads all posts sorted descending by published date
-// The `limit` and `skip` values are used for pagination
 export const pageQuery = graphql`
   query GhostPostQuery($limit: Int!, $skip: Int!) {
-    allGhostPost(
-        sort: { order: DESC, fields: [published_at] },
-        limit: $limit,
-        skip: $skip
+    posts: allGhostPost(
+      sort: { order: DESC, fields: [published_at] },
+      limit: $limit,
+      skip: $skip
+    ) {
+      edges {
+        node {
+          ...GhostPostFields
+        }
+      }
+    }
+    featured: allGhostPost(
+      filter: {featured: {eq: true}},
+      limit: 1,
+    ) {
+      edges {
+        node {
+          ...GhostPostFields
+        }
+      }
+    }
+    recent: allGhostPost(
+      sort: { order: DESC, fields: [published_at] },
+      limit: 1
     ) {
       edges {
         node {

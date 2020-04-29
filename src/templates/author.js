@@ -2,15 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import { Layout, PostCard, Pagination } from '../components/common'
+import { Layout, PostList } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
-* Author page (/author/:slug)
-*
-* Loads all posts for the requested author incl. pagination.
-*
+* Author page (/autor/:slug)
 */
+
 const Author = ({ data, location, pageContext }) => {
     const author = data.ghostAuthor
     const posts = data.allGhostPost.edges
@@ -25,29 +23,17 @@ const Author = ({ data, location, pageContext }) => {
                 type="profile"
             />
             <Layout>
-                <div className="container">
-                    <header className="author-header">
-                        <div className="author-header-content">
-                            <h1>{author.name}</h1>
-                            {author.bio && <p>{author.bio}</p>}
-                            <div className="author-header-meta">
-                                {author.website && <a className="author-header-item" href={author.website} target="_blank" rel="noopener noreferrer">Website</a>}
-                                {twitterUrl && <a className="author-header-item" href={twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>}
-                                {facebookUrl && <a className="author-header-item" href={facebookUrl} target="_blank" rel="noopener noreferrer">Facebook</a>}
-                            </div>
-                        </div>
-                        <div className="author-header-image">
-                            {author.profile_image && <img src={author.profile_image} alt={author.name} />}
-                        </div>
-                    </header>
-                    <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
-                            <PostCard key={node.id} post={node} />
-                        ))}
-                    </section>
-                    <Pagination pageContext={pageContext} />
+              <header className="page-header author"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + author.cover_image + ")  no-repeat center / cover, #111111" }}>
+                <div class="content container">
+                  <h1 class="headline">{author.name}</h1>
+                  {author.bio && <aside class="bio">{author.bio}</aside>}
                 </div>
+                <figure class="wave"></figure>
+              </header>
+              <main className="container overlap-with-header">
+                <PostList posts={posts} />
+              </main>
             </Layout>
         </>
     )
@@ -76,21 +62,21 @@ Author.propTypes = {
 export default Author
 
 export const pageQuery = graphql`
-    query GhostAuthorQuery($slug: String!, $limit: Int!, $skip: Int!) {
-        ghostAuthor(slug: { eq: $slug }) {
-            ...GhostAuthorFields
-        }
-        allGhostPost(
-            sort: { order: DESC, fields: [published_at] },
-            filter: {authors: {elemMatch: {slug: {eq: $slug}}}},
-            limit: $limit,
-            skip: $skip
-        ) {
-            edges {
-                node {
-                ...GhostPostFields
-                }
-            }
-        }
+  query GhostAuthorQuery($slug: String!, $limit: Int!, $skip: Int!) {
+    ghostAuthor(slug: { eq: $slug }) {
+      ...GhostAuthorFields
     }
+    allGhostPost(
+      sort: { order: DESC, fields: [published_at] },
+      filter: {authors: {elemMatch: {slug: {eq: $slug}}}},
+      limit: $limit,
+      skip: $skip
+    ) {
+      edges {
+        node {
+          ...GhostPostFields
+        }
+      }
+    }
+  }
 `
