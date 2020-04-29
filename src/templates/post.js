@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import Helmet from 'react-helmet'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
@@ -30,10 +30,10 @@ const Post = ({ data, location }) => {
           <div className="content container">
             <div className="meta">
               <span className="date">{post.published_at_pretty}</span>
-              <span className="category">
-                <a href="{{url}}">Tag
-                </a>
-              </span>
+              {post.primary_tag && <span className="category">
+                <Link to={post.primary_tag.slug}>{post.primary_tag.name}
+                </Link>
+              </span>}
               <span className="readingtime">{readingTime}</span>
             </div>
             <h1 className="headline">{post.title}</h1>
