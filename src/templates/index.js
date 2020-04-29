@@ -18,7 +18,7 @@ const Index = ({ data, location, pageContext }) => {
             style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + node.feature_image + ")  no-repeat center / cover, #111111" }}>
             <div className="content container">
               <h1 className="headline">{node.title}</h1>
-              <Link className="button" to={node.url}>Lesen</Link>
+              <Link className="button" to={`/${node.slug}/`}>Lesen</Link>
             </div>
             <figure className="wave"></figure>
           </header>
