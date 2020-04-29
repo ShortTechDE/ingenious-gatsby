@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "https://gatsby.ghost.io",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+    "apiUrl": "https://shorttech.de",
+    "contentApiKey": "cf314e70cf6e7fede4c2ad514a"
   },
   "production": {
-    "apiUrl": "https://gatsby.ghost.io",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+    "apiUrl": "https://shorttech.de",
+    "contentApiKey": "cf314e70cf6e7fede4c2ad514a"
   }
 }
