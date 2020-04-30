@@ -18,6 +18,12 @@
   <a href="https://app.netlify.com/sites/shorttech/deploys">
     <img src="https://api.netlify.com/api/v1/badges/9882de2b-16a4-408b-94de-a354c2cd91e7/deploy-status" alt="Netlify Status" />
   </a>
+  <a href="https://twitter.com/ShortTechDE">
+    <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/ShortTechDE?style=social">
+  </a>
+  <a href="https://github.com/ShortTechDE/ingenious-gatsby/milestone/1">
+    <img alt="Relaunch milestone" src="https://img.shields.io/github/milestones/progress/shorttechde/ingenious-gatsby/1?color=%23FF&label=Relaunch%20%F0%9F%8E%89">
+  </a>
 </p>
 
 ## 🚀 Setup development environment
@@ -41,3 +47,7 @@ Start the development server. You now have a local frontend set up pulling conte
 ```
 gatsby develop
 ```
+## 🤝 Contributing
+ingenious-gatsby uses uses [gitmoji](https://gitmoji.carloscuesta.me/) for all commit messages:
+
+Gitmoji is an initiative to standardize and explain the use of emojis on GitHub commit messages. Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit.
