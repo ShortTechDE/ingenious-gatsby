@@ -48,6 +48,15 @@ Start the development server. You now have a local frontend set up pulling conte
 gatsby develop
 ```
 ## 🤝 Contributing
-ingenious-gatsby uses uses [gitmoji](https://gitmoji.carloscuesta.me/) for all commit messages:
+ingenious-gatsby uses [gitmoji](https://gitmoji.carloscuesta.me/) for all commit messages:
 
 Gitmoji is an initiative to standardize and explain the use of emojis on GitHub commit messages. Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit.
+
+## 📄 License
+Copyright (c) 2016 - 2020, ShortTech
+
+Permission to use, copy, modify, and/or distribute this software is 
+*exclusively* granted to ShortTech. Third parties are *only* allowed 
+to use, copy and/or modify this software for contributing to this software
+and/or other educational purposes. By contributing, you grant all rights
+of your contribution to ShortTech.
