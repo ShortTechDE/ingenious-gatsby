@@ -23,7 +23,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <body className={bodyClass} />
       </Helmet>
 
-      <input type="checkbox" id="gn-menustate" className="gn-menustate" />
+      <input type="checkbox" id="gn-menustate" className="gn-menustate" aria-hidden="true" />
 
       <nav id="globalnav">
         <div className="content container">
