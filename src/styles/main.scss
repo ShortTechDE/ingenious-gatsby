@@ -666,6 +666,18 @@ section.page-template {
   background-color: #fff;
   hyphens: auto;
   overflow-wrap: anywhere;
+  animation: fadeInContent 0.8s $default-ease;
+
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
   @media (prefers-color-scheme: dark) {
     background-color: #111111;

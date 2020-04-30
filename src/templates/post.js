@@ -29,7 +29,7 @@ const Post = ({ data, location }) => {
         <header className="page-header article"
           style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + post.feature_image + ")  no-repeat center / cover, #111111" }}>
           <div className="content container">
-            <div className="meta">
+            <div className="meta" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">
               <span className="date">{post.published_at_pretty}</span>
               {post.primary_tag && <span className="category">
                 <AniLink cover bg="#111111" direction="up" duration={1} to={post.primary_tag.slug}>{post.primary_tag.name}
@@ -37,8 +37,8 @@ const Post = ({ data, location }) => {
               </span>}
               <span className="readingtime">{readingTime}</span>
             </div>
-            <h1 className="headline">{post.title}</h1>
-            <div className="authors">
+            <h1 className="headline" data-sal="slide-up" data-sal-duration="1000" data-sal-easing="ease" data-sal-delay="100">{post.title}</h1>
+            <div className="authors" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="500">
               von <AniLink cover bg="#111111" direction="up" duration={1} to={`/autor/${post.primary_author.slug}/`}>{post.primary_author.name}</AniLink>
             </div>
           </div>

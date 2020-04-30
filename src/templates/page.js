@@ -26,12 +26,12 @@ const Page = ({ data, location }) => {
         <header className="page-header"
           style={{background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + page.feature_image + ")  no-repeat center / cover, #111111"}}>
           <div className="content container">
-            <h1 className="headline">{page.title}</h1>
+            <h1 className="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{page.title}</h1>
           </div>
           <figure className="wave"></figure>
         </header>        
         <section className="article container">
-            <div
+          <div
               className="content"
               dangerouslySetInnerHTML={{ __html: page.html }}
             />

@@ -26,7 +26,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       <input type="checkbox" id="gn-menustate" className="gn-menustate" />
 
       <nav id="globalnav">
-        <div className="content container">
+        <div className="content container" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
           <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
             <span className="name">{site.title}</span>
           </AniLink>
@@ -50,12 +50,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       <footer>
         <div className="container">
           <ul className="columns ">
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
               <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to={site.url}>
                 <span className="name">{site.title}</span>
               </AniLink>
             </li>
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">
               <div className="sub-menu">
                 <span className="title">Rechtliches</span>
                 <ul className="links">
@@ -68,7 +68,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </ul>
               </div>
             </li>
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">
               <div className="sub-menu">
                 <span className="title">Allgemein</span>
                 <ul className="links">
@@ -84,7 +84,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </ul>
               </div>
             </li>
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="300">
               <div className="sub-menu">
                 <span className="title">Social Media</span>
                 <ul className="links">
@@ -101,7 +101,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               </div>
             </li>
           </ul>
-          <ul className="copyright">
+          <ul className="copyright" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="400">
             <li className="entry">
               Copyright &copy; ShortTech.de 2016 - {new Date().getFullYear()}
             </li>
