@@ -61,6 +61,31 @@ module.exports = {
         name: `images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-ghost-images`,
+      options: {
+        lookup: [
+          {
+            type: `GhostPost`,
+            imgTags: [`feature_image`],
+          },
+          {
+            type: `GhostPage`,
+            imgTags: [`feature_image`],
+          },
+          {
+            type: `GhostSettings`,
+            imgTags: [`cover_image`],
+          },
+        ],
+        exclude: node => (
+          node.ghostId === undefined
+        ),
+        verbose: true,
+        // Option to disable this module (default: false)
+        disable: false,
+      },
+    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {

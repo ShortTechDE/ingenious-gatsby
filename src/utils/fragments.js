@@ -52,6 +52,16 @@ export const ghostPostFields = graphql`
     custom_excerpt
     visibility
 
+    # Image scraping and thumbnail creating
+    featureImageSharp {
+      base
+      childImageSharp {
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+
     # Dates formatted
     created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
     published_at_pretty: published_at(formatString: "DD. MMMM YYYY")
@@ -142,6 +152,16 @@ export const ghostPageFields = graphql`
     excerpt
     custom_excerpt
     visibility
+
+    # Image scraping and thumbnail creating
+    featureImageSharp {
+      base
+      childImageSharp {
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
 
     # Dates formatted
     created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
