@@ -21,7 +21,7 @@
 </p>
 
 ## 🚀 Setup development environment
-ingenious-gatsby is using `yarn` to manage its dependencies, as it is the recommended package. 
+ingenious-gatsby is using `yarn` to manage its dependencies, as it is the recommended package manager for Ghost. 
 ```
 npm install -g yarn
 ````
