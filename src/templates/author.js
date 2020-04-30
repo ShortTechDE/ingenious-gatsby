@@ -26,8 +26,8 @@ const Author = ({ data, location, pageContext }) => {
               <header className="page-header author"
                 style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + author.cover_image + ")  no-repeat center / cover, #111111" }}>
                 <div class="content container">
-                  <h1 class="headline">{author.name}</h1>
-                  {author.bio && <aside class="bio">{author.bio}</aside>}
+                <h1 class="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{author.name}</h1>
+              {author.bio && <aside class="bio" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">{author.bio}</aside>}
                 </div>
                 <figure class="wave"></figure>
               </header>

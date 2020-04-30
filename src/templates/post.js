@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -28,17 +29,17 @@ const Post = ({ data, location }) => {
         <header className="page-header article"
           style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + post.feature_image + ")  no-repeat center / cover, #111111" }}>
           <div className="content container">
-            <div className="meta">
+            <div className="meta" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">
               <span className="date">{post.published_at_pretty}</span>
               {post.primary_tag && <span className="category">
-                <Link to={post.primary_tag.slug}>{post.primary_tag.name}
-                </Link>
+                <AniLink cover bg="#111111" direction="up" duration={1} to={post.primary_tag.slug}>{post.primary_tag.name}
+                </AniLink>
               </span>}
               <span className="readingtime">{readingTime}</span>
             </div>
-            <h1 className="headline">{post.title}</h1>
-            <div className="authors">
-              von <Link to={`/autor/${post.primary_author.slug}/`}>{post.primary_author.name}</Link>
+            <h1 className="headline" data-sal="slide-up" data-sal-duration="1000" data-sal-easing="ease" data-sal-delay="100">{post.title}</h1>
+            <div className="authors" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="500">
+              von <AniLink cover bg="#111111" direction="up" duration={1} to={`/autor/${post.primary_author.slug}/`}>{post.primary_author.name}</AniLink>
             </div>
           </div>
           <figure className="wave"></figure>

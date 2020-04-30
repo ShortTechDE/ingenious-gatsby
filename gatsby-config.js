@@ -34,6 +34,14 @@ module.exports = {
     siteUrl: config.siteUrl,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-scroll-reveal`,
+      options: {
+        threshold: 0.1,
+        once: true,
+      }
+    },
+    `gatsby-plugin-transition-link`,
     /**
      *  Content Plugins
      */

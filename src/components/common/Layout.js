@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Navigation } from '.'
 import packageJson from '../../../package.json'
 
@@ -24,10 +26,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       <input type="checkbox" id="gn-menustate" className="gn-menustate" />
 
       <nav id="globalnav">
-        <div className="content container">
-          <Link className="brand" href="/">
+        <div className="content container" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
+          <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
             <span className="name">{site.title}</span>
-          </Link>
+          </AniLink>
           <div className="menu">
             <label className="menuicon" for="gn-menustate" aria-hidden="true">
               <span className="bread bread-top">
@@ -48,25 +50,25 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       <footer>
         <div className="container">
           <ul className="columns ">
-            <li className="entry">
-              <Link className="brand" to={site.url}>
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
+              <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to={site.url}>
                 <span className="name">{site.title}</span>
-              </Link>
+              </AniLink>
             </li>
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">
               <div className="sub-menu">
                 <span className="title">Rechtliches</span>
                 <ul className="links">
                   <li className="entry">
-                    <Link to="/impressum" className="link">Impressum</Link>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/impressum" className="link">Impressum</AniLink>
                   </li>
                   <li className="entry">
-                    <Link to="/datenschutzerklaerung" className="link">Datenschutz</Link>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/datenschutzerklaerung" className="link">Datenschutz</AniLink>
                   </li>
                 </ul>
               </div>
             </li>
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">
               <div className="sub-menu">
                 <span className="title">Allgemein</span>
                 <ul className="links">
@@ -74,7 +76,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href="mailto:info@shorttech.de" target="_blank" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
-                    <Link to="/branding" className="link">Branding</Link>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/branding" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
                     <a href="https://github.com/ShortTechDE/" target="_blank" className="link">GitHub</a>
@@ -82,7 +84,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </ul>
               </div>
             </li>
-            <li className="entry">
+            <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="300">
               <div className="sub-menu">
                 <span className="title">Social Media</span>
                 <ul className="links">
@@ -99,7 +101,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               </div>
             </li>
           </ul>
-          <ul className="copyright">
+          <ul className="copyright" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="400">
             <li className="entry">
               Copyright &copy; ShortTech.de 2016 - {new Date().getFullYear()}
             </li>

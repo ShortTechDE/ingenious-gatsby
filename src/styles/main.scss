@@ -201,7 +201,6 @@ nav#globalnav {
     a.brand {
       margin-top: 5px;
       background-repeat: no-repeat;
-      animation: fadeInUp 2s $default-ease;
 
       @media #{$small-device}, #{$medium-device} {
         width: 100%;
@@ -217,7 +216,6 @@ nav#globalnav {
 
         @media #{$small-device}, #{$medium-device} {
           @include show();
-          animation: fadeInUp 2s $default-ease;
 
           display: block;
           position: absolute;
@@ -263,7 +261,6 @@ nav#globalnav {
       }
 
       ul.categories {
-        animation: fadeInUp 2s $default-ease;
 
         > li.entry {
           padding-right: 10px;
@@ -414,7 +411,6 @@ header.page-header {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: block;
-    animation: moveUp 2s $default-ease;
 
     @media (prefers-color-scheme: dark) {
       background-image: url(../images/waves/wave-dark.png);
@@ -428,7 +424,6 @@ header.page-header {
 
   div.content {
     padding: 180px 0;
-    animation: fadeInUp 0.8s $default-ease;
 
     h1.headline {
       margin-top: 6px;
@@ -658,7 +653,6 @@ div.post-list {
 section.article,
 section.page-template {
   @include shadow();
-  animation: moveUp 1s $default-ease;
 
   @media (prefers-color-scheme: dark) {
     box-shadow: 0 1em 3em -0.25em rgba(17, 17, 17, 0.61);
@@ -672,6 +666,18 @@ section.page-template {
   background-color: #fff;
   hyphens: auto;
   overflow-wrap: anywhere;
+  animation: fadeInContent 0.8s $default-ease;
+
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10%, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
   @media (prefers-color-scheme: dark) {
     background-color: #111111;
@@ -1451,46 +1457,5 @@ footer {
         }
       }
     }
-  }
-}
-
-// unspecific animation keyframes
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 10%, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fadeInUpSmall {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 4%, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes moveUp {
-  from {
-    transform: translate3d(0, 10%, 0);
-  }
-  to {
-    transform: none;
   }
 }

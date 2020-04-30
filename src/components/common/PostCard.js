@@ -1,22 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const PostCard = ({ post }) => {
   const url = `/${post.slug}/`
 
   return (
-    <article className="article" data-aos="fade-up" data-aos-duration="800" data-aos-easing="ease-out-cubic"
-      data-aos-delay="100">
-      {post.feature_image ? <Link to={url}><img className="thumbnail" src={post.feature_image} alt={post.title} /></Link> : null}
+    <article className="article" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease-out-cubic">
+      {post.feature_image ? <AniLink cover bg="#111111" direction="up" duration={1} to={url}><img className="thumbnail" src={post.feature_image} alt={post.title} /></AniLink> : null}
       <div className="content">
-        {post.primary_tag ? <Link to={post.primary_tag.slug} className="category">{post.primary_tag.name}</Link> : null}
+        {post.primary_tag ? <AniLink cover bg="#111111" direction="up" duration={1} to={post.primary_tag.slug} className="category">{post.primary_tag.name}</AniLink> : null}
         <h1 className="title">{post.title}</h1>
         <p className="text-preview">
           {post.excerpt}
         </p>
       </div>
-      <Link to={url} className="button dark">Lesen</Link>
+      <AniLink cover bg="#111111" direction="up" duration={1} to={url} className="button dark">Lesen</AniLink>
     </article>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Layout } from '../components/common'
 
 const NotFoundPage = () => (
@@ -12,7 +12,7 @@ const NotFoundPage = () => (
     </header>
 
     <section class="error container">
-      <Link to="/">Zurück zum Start</Link>
+      <AniLink cover bg="#111111" direction="up" duration={1} to="/">Zurück zum Start</AniLink>
     </section>
   </Layout>
 )

@@ -24,7 +24,7 @@ const Tag = ({ data, location, pageContext }) => {
       />
       <Layout>
         <header className="page-header category"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + tag.cover_image + ")  no-repeat center / cover, #111111" }}>
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + tag.feature_image + ")  no-repeat center / cover, #111111" }}>
           <div class="content container">
             <h1 class="headline">{tag.name}</h1>
             {tag.description ? <aside class="bio">{tag.description}</aside> : null}
