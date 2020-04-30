@@ -599,6 +599,14 @@ div.post-list {
       }
     }
 
+    img.thumbnail {
+      height: 180px;
+      width: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      object-fit: cover;
+    }
+
     div.content {
       padding: 20px 30px;
       height: 100%;
