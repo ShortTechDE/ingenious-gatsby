@@ -12,7 +12,7 @@ const NotFoundPage = () => (
     </header>
 
     <section class="error container">
-      <AniLink cover bg="#111111" direction="up" duration={0.8} to="/">Zurück zum Start</AniLink>
+      <AniLink cover bg="#111111" direction="up" duration={1} to="/">Zurück zum Start</AniLink>
     </section>
   </Layout>
 )

@@ -27,7 +27,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
       <nav id="globalnav">
         <div className="content container">
-          <AniLink cover bg="#111111" direction="up" duration={0.8} className="brand" to="/">
+          <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
             <span className="name">{site.title}</span>
           </AniLink>
           <div className="menu">
@@ -51,7 +51,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="container">
           <ul className="columns ">
             <li className="entry">
-              <AniLink cover bg="#111111" direction="up" duration={0.8} className="brand" to={site.url}>
+              <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to={site.url}>
                 <span className="name">{site.title}</span>
               </AniLink>
             </li>
@@ -60,10 +60,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Rechtliches</span>
                 <ul className="links">
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={0.8} to="/impressum" className="link">Impressum</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/impressum" className="link">Impressum</AniLink>
                   </li>
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={0.8} to="/datenschutzerklaerung" className="link">Datenschutz</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/datenschutzerklaerung" className="link">Datenschutz</AniLink>
                   </li>
                 </ul>
               </div>
@@ -76,7 +76,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href="mailto:info@shorttech.de" target="_blank" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={0.8} to="/branding" className="link">Branding</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/branding" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
                     <a href="https://github.com/ShortTechDE/" target="_blank" className="link">GitHub</a>

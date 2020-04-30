@@ -19,7 +19,7 @@ const Index = ({ data, location, pageContext }) => {
             style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + node.feature_image + ")  no-repeat center / cover, #111111" }}>
             <div className="content container">
               <h1 className="headline">{node.title}</h1>
-              <AniLink cover bg="#111111" direction="up" duration={0.8} className="button" to={`/${node.slug}/`}>Lesen</AniLink>
+              <AniLink cover bg="#111111" direction="up" duration={1} className="button" to={`/${node.slug}/`}>Lesen</AniLink>
             </div>
             <figure className="wave"></figure>
           </header>

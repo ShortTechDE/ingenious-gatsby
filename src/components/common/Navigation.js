@@ -11,7 +11,7 @@ const Navigation = ({ data }) => (
             if (navItem.url.match(/^\s?http(s?)/gi)) {
                 return <li className="entry"><a className="link" href={navItem.url} key={i} target="_blank" rel="noopener noreferrer">{navItem.label}</a></li>
             } else {
-                return <li className="entry"><AniLink cover bg="#111111" direction="up" duration={0.8} className="link" to={navItem.url} key={i}>{navItem.label}</AniLink></li>
+                return <li className="entry"><AniLink cover bg="#111111" direction="up" duration={1} className="link" to={navItem.url} key={i}>{navItem.label}</AniLink></li>
             }
         })}
     </ul>
