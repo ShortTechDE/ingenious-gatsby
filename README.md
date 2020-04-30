@@ -53,10 +53,10 @@ ingenious-gatsby uses [gitmoji](https://gitmoji.carloscuesta.me/) for all commit
 Gitmoji is an initiative to standardize and explain the use of emojis on GitHub commit messages. Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit.
 
 ## 📄 License
-Copyright (c) 2016 - 2020, ShortTech
+**Copyright (c) 2016 - 2020, ShortTech**
 
 Permission to use, copy, modify, and/or distribute this software is 
-*exclusively* granted to ShortTech. Third parties are *only* allowed 
+***exclusively*** granted to ShortTech. Third parties are ***only*** allowed 
 to use, copy and/or modify this software for contributing to this software
 and/or other educational purposes. By contributing, you grant all rights
 of your contribution to ShortTech.
