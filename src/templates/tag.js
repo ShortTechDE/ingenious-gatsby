@@ -2,40 +2,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import { Layout, PostList } from '../components/common'
+import { Layout, PostView } from '../components/common'
 import { MetaData } from '../components/common/meta'
+import { GlobalStateContext } from "../context/GlobalState"
 
 /**
-* Tag page (/tag/:slug)
-*
-* Loads all posts for the requested tag incl. pagination.
-*
+* Tag page
 */
+
 const Tag = ({ data, location, pageContext }) => {
   const tag = data.ghostTag
   const posts = data.allGhostPost.edges
 
   return (
-    <>
-      <MetaData
-        data={data}
-        location={location}
-        type="series"
-      />
-      <Layout>
-        <header className="page-header category"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + tag.feature_image + ")  no-repeat center / cover, #111111" }}>
-          <div class="content container">
-            <h1 class="headline">{tag.name}</h1>
-            {tag.description ? <aside class="bio">{tag.description}</aside> : null}
-          </div>
-          <figure class="wave"></figure>
-        </header>
-        <main className="container overlap-with-header">
-          <PostList posts={posts} />
-        </main>
-      </Layout>
-    </>
+    <GlobalStateContext.Consumer>
+      {g => {
+        return (
+          <>
+            <MetaData
+              data={data}
+              location={location}
+              type="series"
+            />
+            <Layout isTag={true}>
+              <header className="page-header category"
+                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + tag.feature_image + ")  no-repeat center / cover, #111111" }}>
+                <div class="content container">
+                  <h1 class="headline">{tag.name}</h1>
+                  {tag.description ? <aside class="bio">{tag.description}</aside> : null}
+                </div>
+                <figure class="wave"></figure>
+              </header>
+              <main className="container overlap-with-header">
+                <PostView posts={posts} globalState={g} pageContext={pageContext} isTag={true} />
+              </main>
+            </Layout>
+          </>
+        )
+      }}
+    </GlobalStateContext.Consumer>
   )
 }
 
