@@ -1,8 +1,8 @@
 module.exports = {
     siteUrl: `https://shorttech.de`, // Site domain. Do not include a trailing slash!
 
-    postsPerPage: 30, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
-
+    postsPerPage: 9,
+    
     siteTitleMeta: `ShortTech`, // This allows an alternative site title for meta data for pages.
     siteDescriptionMeta: `Wir berichten Communitynah über die Neuerungen der Technik- und Medienwelt... und jetzt auch im komplettem Redesign!`, // This allows an alternative site description for meta data for pages.
 

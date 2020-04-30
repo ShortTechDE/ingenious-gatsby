@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import url from 'url'
 
-import config from '../../../utils/siteConfig'
 import ArticleMeta from './ArticleMeta'
 import WebsiteMeta from './WebsiteMeta'
 import AuthorMeta from './AuthorMeta'
@@ -21,6 +20,7 @@ const MetaData = ({
     image,
     location,
 }) => {
+    const config = settings.site.siteMetadata
     const canonical = url.resolve(config.siteUrl, location.pathname)
     const { ghostPost, ghostTag, ghostAuthor, ghostPage } = data
     settings = settings.allGhostSettings.edges[0].node
@@ -88,6 +88,7 @@ MetaData.propTypes = {
     }).isRequired,
     settings: PropTypes.shape({
         allGhostSettings: PropTypes.object.isRequired,
+        site: PropTypes.object.isRequired,
     }).isRequired,
     location: PropTypes.shape({
         pathname: PropTypes.string.isRequired,
@@ -107,6 +108,11 @@ const MetaDataQuery = props => (
                             title
                             description
                         }
+                    }
+                }
+                site {
+                    siteMetadata {
+                        ...SiteMetadataFields
                     }
                 }
             }

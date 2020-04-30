@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import Link from 'gatsby-plugin-transition-link'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Navigation } from '.'
 import packageJson from '../../../package.json'
@@ -31,7 +30,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             <span className="name">{site.title}</span>
           </AniLink>
           <div className="menu">
-            <label className="menuicon" for="gn-menustate" aria-hidden="true">
+            <label className="menuicon" htmlFor="gn-menustate" aria-hidden="true">
               <span className="bread bread-top">
                 <span className="crust crust-top"></span>
               </span>
@@ -51,7 +50,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="container">
           <ul className="columns ">
             <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
-              <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to={site.url}>
+              <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
                 <span className="name">{site.title}</span>
               </AniLink>
             </li>

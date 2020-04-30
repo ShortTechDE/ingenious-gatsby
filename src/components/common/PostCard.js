@@ -4,11 +4,11 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { ImgSharp } from '.'
 
 const PostCard = ({ post }) => {
-  const url = `/${post.slug}/`
+  const url = `/${post.primary_tag.slug}/${post.slug}/`
   const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.childImageSharp && post.featureImageSharp.childImageSharp.fluid
 
   return (
-    <article className="article" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease-out-cubic">
+    <article className="article">
       <AniLink cover bg="#111111" direction="up" duration={1} to={url}>
         <ImgSharp fluidClass="thumbnail" srcClass="thumbnail" fluidImg={fluidFeatureImg} srcImg={post.feature_image} alt={post.title} />
       </AniLink>

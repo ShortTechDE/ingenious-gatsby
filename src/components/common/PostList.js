@@ -45,7 +45,7 @@ const PostList = ({ posts }) => {
 }
 
 PostList.propTypes = {
-  posts: PropTypes.object,
+  posts: PropTypes.array,
 }
 
 export default PostList

@@ -6,9 +6,9 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import ImageMeta from './ImageMeta'
 import getAuthorProperties from './getAuthorProperties'
-import config from '../../../utils/siteConfig'
 
 const AuthorMeta = ({ data, settings, canonical }) => {
+    const config = settings.site.siteMetadata
     settings = settings.allGhostSettings.edges[0].node
 
     const author = getAuthorProperties(data)
@@ -72,6 +72,7 @@ AuthorMeta.propTypes = {
         twitter: PropTypes.string,
         description: PropTypes.string,
         allGhostSettings: PropTypes.object.isRequired,
+        site: PropTypes.object.isRequired,
     }).isRequired,
     canonical: PropTypes.string.isRequired,
 }
@@ -85,6 +86,11 @@ const AuthorMetaQuery = props => (
                         node {
                             ...GhostSettingsFields
                         }
+                    }
+                }
+                site {
+                    siteMetadata {
+                        ...SiteMetadataFields
                     }
                 }
             }
