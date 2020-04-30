@@ -588,12 +588,33 @@ div.post-list {
       color: white;
     }
 
+    div.thumbnail {
+      height: 180px;
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        object-fit: cover;
+        animation: betterUnblur 1s ease;
+
+        @keyframes betterUnblur {
+          from {
+            filter: blur(30px);
+          } to {
+            filter: blur(0);
+          }
+        }
+      }
+    }
+
     img.thumbnail {
+      height: 180px;
+      width: 100%;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
-      height: 180px;
       object-fit: cover;
-      width: 100%;
     }
 
     div.content {

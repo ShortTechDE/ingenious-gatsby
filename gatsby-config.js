@@ -1,6 +1,6 @@
 const path = require(`path`)
 
-const config = require(`./src/utils/siteConfig`)
+const config = require(`./src/utils/siteConfigDefaults`)
 const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
 
 let ghostConfig
@@ -31,7 +31,16 @@ try {
 */
 module.exports = {
   siteMetadata: {
-    siteUrl: config.siteUrl,
+    siteUrl: `https://shorttech.de`,
+    postsPerPage: 3,
+    siteTitleMeta: `Willkommen`,
+    siteDescriptionMeta: `Wir berichten Communitynah über die Neuerungen der Technik- und Medienwelt... und jetzt auch im komplettem Redesign!`,
+    shareImageWidth: 1000,
+    shareImageHeight: 523,
+    shortTitle: `ShortTech`,
+    siteIcon: `logo.png`,
+    backgroundColor: `#111111`,
+    themeColor: `#1688A7`,
   },
   plugins: [
     {
@@ -59,6 +68,31 @@ module.exports = {
       options: {
         path: path.join(__dirname, `src`, `images`),
         name: `images`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-ghost-images`,
+      options: {
+        lookup: [
+          {
+            type: `GhostPost`,
+            imgTags: [`feature_image`],
+          },
+          {
+            type: `GhostPage`,
+            imgTags: [`feature_image`],
+          },
+          {
+            type: `GhostSettings`,
+            imgTags: [`cover_image`],
+          },
+        ],
+        exclude: node => (
+          node.ghostId === undefined
+        ),
+        verbose: true,
+        // Option to disable this module (default: false)
+        disable: false,
       },
     },
     `gatsby-plugin-sharp`,

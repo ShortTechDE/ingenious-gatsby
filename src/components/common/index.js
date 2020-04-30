@@ -1,5 +1,8 @@
 export { default as Layout } from './Layout'
+export { default as ImgSharp } from './ImgSharp'
 export { default as PostCard } from './PostCard'
 export { default as Pagination } from './Pagination'
 export { default as Navigation } from './Navigation'
 export { default as PostList } from './PostList'
+export { default as InfiniteScroll } from './InfiniteScroll'
+export { default as PostView } from './PostView'

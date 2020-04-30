@@ -11,10 +11,35 @@ import { graphql } from 'gatsby'
 *
 */
 
+// Used for site config
+export const siteMetadataFields = graphql`
+  fragment SiteMetadataFields on SiteSiteMetadata {
+    siteUrl
+    postsPerPage
+    siteTitleMeta
+    siteDescriptionMeta
+    shareImageWidth
+    shareImageHeight
+    shortTitle
+    siteIcon
+    backgroundColor
+    themeColor
+    overwriteGhostNavigation {
+      label
+      url
+    }
+    navigation {
+      label
+      url
+    }
+  }
+`
+
 // Used for tag archive pages
 export const ghostTagFields = graphql`
   fragment GhostTagFields on GhostTag {
     slug
+    url
     name
     visibility
     feature_image
@@ -28,6 +53,7 @@ export const ghostTagFields = graphql`
 export const ghostAuthorFields = graphql`
   fragment GhostAuthorFields on GhostAuthor {
     slug
+    url
     name
     bio
     cover_image
@@ -51,6 +77,16 @@ export const ghostPostFields = graphql`
     excerpt
     custom_excerpt
     visibility
+
+    # Image scraping and thumbnail creating
+    featureImageSharp {
+      base
+      childImageSharp {
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
 
     # Dates formatted
     created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
@@ -142,6 +178,16 @@ export const ghostPageFields = graphql`
     excerpt
     custom_excerpt
     visibility
+
+    # Image scraping and thumbnail creating
+    featureImageSharp {
+      base
+      childImageSharp {
+        fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
 
     # Dates formatted
     created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
@@ -238,6 +284,10 @@ export const ghostSettingsFields = graphql`
     codeinjection_foot
     codeinjection_styles
     navigation {
+      label
+      url
+    }
+    secondary_navigation {
       label
       url
     }

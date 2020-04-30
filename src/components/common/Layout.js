@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import Link from 'gatsby-plugin-transition-link'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Navigation } from '.'
 import packageJson from '../../../package.json'
@@ -23,15 +22,15 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <body className={bodyClass} />
       </Helmet>
 
-      <input type="checkbox" id="gn-menustate" className="gn-menustate" />
+      <input type="checkbox" id="gn-menustate" className="gn-menustate" aria-hidden="true" />
 
       <nav id="globalnav">
-        <div className="content container" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
-          <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
+        <div className="content container">
+          <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
             <span className="name">{site.title}</span>
           </AniLink>
           <div className="menu">
-            <label className="menuicon" for="gn-menustate" aria-hidden="true">
+            <label className="menuicon" htmlFor="gn-menustate" aria-hidden="true">
               <span className="bread bread-top">
                 <span className="crust crust-top"></span>
               </span>
@@ -51,7 +50,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="container">
           <ul className="columns ">
             <li className="entry" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
-              <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to={site.url}>
+              <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
                 <span className="name">{site.title}</span>
               </AniLink>
             </li>
@@ -79,7 +78,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <AniLink cover bg="#111111" direction="up" duration={1} to="/branding" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
-                    <a href="https://github.com/ShortTechDE/" target="_blank" className="link">GitHub</a>
+                    <a href="https://github.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">GitHub</a>
                   </li>
                 </ul>
               </div>
@@ -89,13 +88,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Social Media</span>
                 <ul className="links">
                   <li className="entry">
-                    <a href={twitterUrl} target="_blank" className="link">Twitter</a>
+                    <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="link">Twitter</a>
                   </li>
                   <li className="entry">
-                    <a href="https://t.me/ShortTech" target="_blank" className="link">Telegram</a>
+                    <a href="https://t.me/ShortTech" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
                   </li>
                   <li className="entry">
-                    <a href="https://www.instagram.com/ShortTechDE/" target="_blank" className="link">Instagram</a>
+                    <a href="https://www.instagram.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
                   </li>
                 </ul>
               </div>

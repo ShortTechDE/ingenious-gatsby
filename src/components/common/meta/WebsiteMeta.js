@@ -6,9 +6,9 @@ import { StaticQuery, graphql } from 'gatsby'
 import url from 'url'
 
 import ImageMeta from './ImageMeta'
-import config from '../../../utils/siteConfig'
 
 const WebsiteMeta = ({ data, settings, canonical, title, description, image, type }) => {
+    const config = settings.site.siteMetadata
     settings = settings.allGhostSettings.edges[0].node
 
     const publisherLogo = url.resolve(config.siteUrl, (settings.logo || config.siteIcon))
@@ -87,6 +87,7 @@ WebsiteMeta.propTypes = {
         title: PropTypes.string,
         twitter: PropTypes.string,
         allGhostSettings: PropTypes.object.isRequired,
+        site: PropTypes.object.isRequired,
     }).isRequired,
     canonical: PropTypes.string.isRequired,
     title: PropTypes.string,
@@ -104,6 +105,11 @@ const WebsiteMetaQuery = props => (
                         node {
                             ...GhostSettingsFields
                         }
+                    }
+                }
+                site {
+                    siteMetadata {
+                        ...SiteMetadataFields
                     }
                 }
             }

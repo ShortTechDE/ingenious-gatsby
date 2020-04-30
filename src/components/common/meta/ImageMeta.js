@@ -1,9 +1,12 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import PropTypes from 'prop-types'
-import config from '../../../utils/siteConfig'
 
-const ImageMeta = ({ image }) => {
+import { StaticQuery, graphql } from 'gatsby'
+
+const ImageMeta = ({ settings, image }) => {
+    const config = settings.site.siteMetadata
+
     if (!image) {
         return null
     }
@@ -20,7 +23,25 @@ const ImageMeta = ({ image }) => {
 }
 
 ImageMeta.propTypes = {
+    settings: PropTypes.shape({
+        site: PropTypes.object.isRequired,
+    }).isRequired,
     image: PropTypes.string,
 }
 
-export default ImageMeta
+const ImageMetaQuery = props => (
+    <StaticQuery
+        query={graphql`
+            query GhostSettingsImageMeta {
+                site {
+                    siteMetadata {
+                        ...SiteMetadataFields
+                    }
+                }
+            }
+        `}
+        render={data => <ImageMeta settings={data} {...props} />}
+    />
+)
+
+export default ImageMetaQuery
