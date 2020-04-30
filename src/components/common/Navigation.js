@@ -6,7 +6,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 * Navigation component
 */
 const Navigation = ({ data }) => (
-    <ul className="categories">
+    <ul className="categories" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
         {data.map((navItem, i) => {
             if (navItem.url.match(/^\s?http(s?)/gi)) {
                 return <li className="entry"><a className="link" href={navItem.url} key={i} target="_blank" rel="noopener noreferrer">{navItem.label}</a></li>

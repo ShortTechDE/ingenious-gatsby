@@ -26,8 +26,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       <input type="checkbox" id="gn-menustate" className="gn-menustate" />
 
       <nav id="globalnav">
-        <div className="content container" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
-          <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/">
+        <div className="content container">
+          <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
             <span className="name">{site.title}</span>
           </AniLink>
           <div className="menu">
