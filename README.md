@@ -1,9 +1,26 @@
-# ingenious-gatsby 👾 [![Netlify Status](https://api.netlify.com/api/v1/badges/9882de2b-16a4-408b-94de-a354c2cd91e7/deploy-status)](https://app.netlify.com/sites/shorttech/deploys)
+<p align="center">
+  <a href="https://shorttech.de">
+    <img alt="ShortTech" src="https://shorttech.de/assets/img/branding/color.svg" width="48" />
+  </a>
+</p>
+<h1 align="center">
+  ingenious-gatsby
+</h1>
 
-ingenious-gatsby is the GatsbyJS and GraphQL-powered frontend that powers ShortTech. The site is served by [Netlify](https://www.netlify.com/).
-On the backend site, ShortTech is powered by a headless [Ghost](https://ghost.org/) installation.
+<h3 align="center">
+  👾
+</h3>
 
-## Setup development environment
+<p align="center">
+  ingenious-gatsby is the GatsbyJS and GraphQL-powered frontend that powers ShortTech. The site is served by <a href="https://netlify.com">Netlify</a>. On the backend site, ShortTech is powered by a headless <a href="https://ghost.org">Ghost</a> installation.
+</p>
+<p align="center">
+  <a href="https://app.netlify.com/sites/shorttech/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/9882de2b-16a4-408b-94de-a354c2cd91e7/deploy-status" alt="Netlify Status" />
+  </a>
+</p>
+
+## 🚀 Setup development environment
 ingenious-gatsby is using `yarn` to manage its dependencies, as it is the recommended package. 
 ```
 npm install -g yarn
