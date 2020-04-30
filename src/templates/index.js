@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { Layout, PostList, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -18,7 +19,7 @@ const Index = ({ data, location, pageContext }) => {
             style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + node.feature_image + ")  no-repeat center / cover, #111111" }}>
             <div className="content container">
               <h1 className="headline">{node.title}</h1>
-              <Link className="button" to={`/${node.slug}/`}>Lesen</Link>
+              <AniLink cover bg="#111111" direction="up" duration={0.8} className="button" to={`/${node.slug}/`}>Lesen</AniLink>
             </div>
             <figure className="wave"></figure>
           </header>

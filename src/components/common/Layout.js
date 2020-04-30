@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
+import Link from 'gatsby-plugin-transition-link'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Navigation } from '.'
 import packageJson from '../../../package.json'
 
@@ -25,9 +27,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
       <nav id="globalnav">
         <div className="content container">
-          <Link className="brand" href="/">
+          <AniLink cover bg="#111111" direction="up" duration={0.8} className="brand" to="/">
             <span className="name">{site.title}</span>
-          </Link>
+          </AniLink>
           <div className="menu">
             <label className="menuicon" for="gn-menustate" aria-hidden="true">
               <span className="bread bread-top">
@@ -49,19 +51,19 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="container">
           <ul className="columns ">
             <li className="entry">
-              <Link className="brand" to={site.url}>
+              <AniLink cover bg="#111111" direction="up" duration={0.8} className="brand" to={site.url}>
                 <span className="name">{site.title}</span>
-              </Link>
+              </AniLink>
             </li>
             <li className="entry">
               <div className="sub-menu">
                 <span className="title">Rechtliches</span>
                 <ul className="links">
                   <li className="entry">
-                    <Link to="/impressum" className="link">Impressum</Link>
+                    <AniLink cover bg="#111111" direction="up" duration={0.8} to="/impressum" className="link">Impressum</AniLink>
                   </li>
                   <li className="entry">
-                    <Link to="/datenschutzerklaerung" className="link">Datenschutz</Link>
+                    <AniLink cover bg="#111111" direction="up" duration={0.8} to="/datenschutzerklaerung" className="link">Datenschutz</AniLink>
                   </li>
                 </ul>
               </div>
@@ -74,7 +76,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href="mailto:info@shorttech.de" target="_blank" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
-                    <Link to="/branding" className="link">Branding</Link>
+                    <AniLink cover bg="#111111" direction="up" duration={0.8} to="/branding" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
                     <a href="https://github.com/ShortTechDE/" target="_blank" className="link">GitHub</a>

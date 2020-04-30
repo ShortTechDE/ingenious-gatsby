@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { Layout } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -31,14 +32,14 @@ const Post = ({ data, location }) => {
             <div className="meta">
               <span className="date">{post.published_at_pretty}</span>
               {post.primary_tag && <span className="category">
-                <Link to={post.primary_tag.slug}>{post.primary_tag.name}
-                </Link>
+                <AniLink cover bg="#111111" direction="up" duration={0.8} to={post.primary_tag.slug}>{post.primary_tag.name}
+                </AniLink>
               </span>}
               <span className="readingtime">{readingTime}</span>
             </div>
             <h1 className="headline">{post.title}</h1>
             <div className="authors">
-              von <Link to={`/autor/${post.primary_author.slug}/`}>{post.primary_author.name}</Link>
+              von <AniLink cover bg="#111111" direction="up" duration={0.8} to={`/autor/${post.primary_author.slug}/`}>{post.primary_author.name}</AniLink>
             </div>
           </div>
           <figure className="wave"></figure>

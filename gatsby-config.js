@@ -34,6 +34,9 @@ module.exports = {
     siteUrl: config.siteUrl,
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-transition-link",
+    },
     /**
      *  Content Plugins
      */
