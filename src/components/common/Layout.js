@@ -79,7 +79,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <AniLink cover bg="#111111" direction="up" duration={1} to="/branding" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
-                    <a href="https://github.com/ShortTechDE/" target="_blank" className="link">GitHub</a>
+                    <a href="https://github.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">GitHub</a>
                   </li>
                 </ul>
               </div>
@@ -89,13 +89,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Social Media</span>
                 <ul className="links">
                   <li className="entry">
-                    <a href={twitterUrl} target="_blank" className="link">Twitter</a>
+                    <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="link">Twitter</a>
                   </li>
                   <li className="entry">
-                    <a href="https://t.me/ShortTech" target="_blank" className="link">Telegram</a>
+                    <a href="https://t.me/ShortTech" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
                   </li>
                   <li className="entry">
-                    <a href="https://www.instagram.com/ShortTechDE/" target="_blank" className="link">Instagram</a>
+                    <a href="https://www.instagram.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
                   </li>
                 </ul>
               </div>
