@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+
 import { Navigation, DocumentHead } from '.'
 import packageJson from '../../../package.json'
 
@@ -11,8 +11,8 @@ import '../../styles/main.scss'
 
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
   const site = data.allGhostSettings.edges[0].node
-  const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
-  const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+  const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}/` : null
+  const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}/` : null
 
   return (
     <>
@@ -56,10 +56,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Rechtliches</span>
                 <ul className="links">
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={1} to="/impressum" className="link">Impressum</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/impressum/" className="link">Impressum</AniLink>
                   </li>
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={1} to="/datenschutzerklaerung" className="link">Datenschutz</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/datenschutzerklaerung/" className="link">Datenschutz</AniLink>
                   </li>
                 </ul>
               </div>
@@ -72,7 +72,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href="mailto:info@shorttech.de" target="_blank" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={1} to="/branding" className="link">Branding</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/branding/" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
                     <a href="https://github.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">GitHub</a>
@@ -88,7 +88,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="link">Twitter</a>
                   </li>
                   <li className="entry">
-                    <a href="https://t.me/ShortTech" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
+                    <a href="https://t.me/ShortTech/" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
                   </li>
                   <li className="entry">
                     <a href="https://www.instagram.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
