@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import BackgroundImage from 'gatsby-background-image'
 
 import { Layout, PostSuggestion } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -27,9 +28,13 @@ const Post = ({ data, location }) => {
         <style type="text/css">{`${post.codeinjection_styles}`}</style>
       </Helmet>
       <Layout>
-        <header className="page-header article"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + post.feature_image + ")  no-repeat center / cover, #111111" }}>
-          <div className="content container">
+        <BackgroundImage
+          Tag="header"
+          className="page-header article"
+          fluid={[`linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3))`, post.featureImageSharp.large.fluid]}
+          backgroundColor={`#111111`}
+        >
+         <div className="content container">
             <div className="meta" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">
               <span className="date">{post.published_at_pretty}</span>
               {post.primary_tag && <span className="category">
@@ -44,7 +49,7 @@ const Post = ({ data, location }) => {
             </div>
           </div>
           <figure className="wave"></figure>
-        </header>
+        </BackgroundImage>
         <section className="article container">
           <div
             className="content"

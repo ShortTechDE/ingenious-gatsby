@@ -62,6 +62,16 @@ export const ghostAuthorFields = graphql`
     website
     twitter
     facebook
+
+    # Image scraping
+    coverImageSharp {
+      base
+      large: childImageSharp {
+        fluid(maxWidth: 2000, quality: 90) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
 `
 
@@ -81,8 +91,13 @@ export const ghostPostFields = graphql`
     # Image scraping and thumbnail creating
     featureImageSharp {
       base
-      childImageSharp {
+      thumbnail: childImageSharp {
         fluid(maxHeight: 500) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+      large: childImageSharp {
+        fluid(maxWidth: 2000, quality: 90) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -140,6 +155,7 @@ export const ghostPostFields = graphql`
       meta_title
       visibility
     }
+    
     tags {
       name
       slug
@@ -179,11 +195,11 @@ export const ghostPageFields = graphql`
     custom_excerpt
     visibility
 
-    # Image scraping and thumbnail creating
+    # Image scraping
     featureImageSharp {
       base
-      childImageSharp {
-        fluid(maxHeight: 500) {
+      large: childImageSharp {
+        fluid(maxWidth: 2000, quality: 90) {
           ...GatsbyImageSharpFluid
         }
       }
