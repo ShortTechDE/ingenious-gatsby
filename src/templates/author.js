@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import BackgroundImage from 'gatsby-background-image'
 
 import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
