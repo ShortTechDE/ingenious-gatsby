@@ -52,6 +52,9 @@ ingenious-gatsby uses [gitmoji](https://gitmoji.carloscuesta.me/) for all commit
 
 Gitmoji is an initiative to standardize and explain the use of emojis on GitHub commit messages. Using emojis on commit messages provides an easy way of identifying the purpose or intention of a commit.
 
+## 👥 Credits
+Parts of this frontend have been copied from and customized based on [Ghost](https://ghost.org/)'s own [gatsby-starter-ghost](https://github.com/TryGhost/gatsby-starter-ghost/), [gatsby-theme-try-ghost](https://github.com/styxlab/gatsby-theme-try-ghost/) by [styxlab](https://github.com/styxlab/) and [gatsby-starter-infinite-scroll](https://github.com/baobabKoodaa/gatsby-starter-infinite-scroll/) by [Atte Juvonen](https://github.com/baobabKoodaa/). Be sure to check out their works If you want to start through with a Gatsby-based Ghost blog and/or theme.
+
 ## 📄 License
 **Copyright (c) 2016 - 2020, ShortTech**
 
