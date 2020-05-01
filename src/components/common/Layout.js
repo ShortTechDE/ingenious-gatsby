@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { Navigation } from '.'
+import { Navigation, DocumentHead } from '.'
 import packageJson from '../../../package.json'
 
 // Styles
@@ -16,12 +16,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
   return (
     <>
-      <Helmet>
-        <html lang={site.lang} />
-        <style type="text/css">{`${site.codeinjection_styles}`}</style>
-        <body className={bodyClass} />
-      </Helmet>
-
+      <DocumentHead site={site} className={bodyClass} />
+      
       <input type="checkbox" id="gn-menustate" className="gn-menustate" aria-hidden="true" />
 
       <nav id="globalnav">
