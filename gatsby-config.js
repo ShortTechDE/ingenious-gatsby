@@ -1,9 +1,10 @@
+const _ = require(`lodash`)
 const path = require(`path`)
 
-const config = require(`./src/utils/siteConfigDefaults`)
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
-
+const siteConfig = require(`./src/utils/siteConfig`)
 let ghostConfig
+
+const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
 
 try {
   ghostConfig = require(`./.ghost`)
@@ -30,19 +31,9 @@ try {
 *
 */
 module.exports = {
-  siteMetadata: {
-    siteUrl: `https://shorttech.de`,
-    postsPerPage: 3,
-    siteTitleMeta: `Willkommen`,
-    siteDescriptionMeta: `Wir berichten Communitynah über die Neuerungen der Technik- und Medienwelt... und jetzt auch im komplettem Redesign!`,
-    shareImageWidth: 1000,
-    shareImageHeight: 523,
-    shortTitle: `ShortTech`,
-    siteIcon: `logo.png`,
-    backgroundColor: `#111111`,
-    themeColor: `#1688A7`,
-  },
+  siteMetadata: siteConfig,
   plugins: [
+    // Animation/Transition plugins
     {
       resolve: `gatsby-plugin-scroll-reveal`,
       options: {
@@ -51,9 +42,7 @@ module.exports = {
       }
     },
     `gatsby-plugin-transition-link`,
-    /**
-     *  Content Plugins
-     */
+    // Source from file system
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -61,8 +50,7 @@ module.exports = {
         name: `pages`,
       },
     },
-    // Setup for optimised images.
-    // See https://www.gatsbyjs.org/packages/gatsby-image/
+    // Setup for optimised images
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -101,6 +89,7 @@ module.exports = {
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    // Source from Ghost instance
     {
       resolve: `gatsby-source-ghost`,
       options:
@@ -108,18 +97,16 @@ module.exports = {
           ? ghostConfig.development
           : ghostConfig.production,
     },
-    /**
-     *  Utility Plugins
-     */
+    // Generate webmanifest for PWA
     {
       resolve: `gatsby-plugin-ghost-manifest`,
       options: {
-        short_name: config.shortTitle,
+        short_name: siteConfig.shortTitle,
         start_url: `/`,
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
-        display: `minimal-ui`,
-        icon: `static/${config.siteIcon}`,
+        background_color: siteConfig.backgroundColor,
+        theme_color: siteConfig.themeColor,
+        display: `standalone`,
+        icon: `static/${siteConfig.siteIcon}`,
         legacy: true,
         query: `
           {
@@ -135,6 +122,7 @@ module.exports = {
         `,
       },
     },
+    // Auto generate RSS feed
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -151,10 +139,11 @@ module.exports = {
           }
         `,
         feeds: [
-          generateRSSFeed(config),
+          generateRSSFeed(siteConfig),
         ],
       },
     },
+    // Generate sitemap
     {
       resolve: `gatsby-plugin-advanced-sitemap`,
       options: {
@@ -230,5 +219,6 @@ module.exports = {
     `gatsby-plugin-force-trailing-slashes`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
   ],
 }

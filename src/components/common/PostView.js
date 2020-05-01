@@ -84,8 +84,6 @@ PostView.propTypes = {
   globalState: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  isHome: PropTypes.bool,
-  isAuthor: PropTypes.bool,
 }
 
 export default PostView

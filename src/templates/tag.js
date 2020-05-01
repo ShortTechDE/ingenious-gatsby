@@ -18,6 +18,7 @@ const Tag = ({ data, location, pageContext }) => {
   return (
     <GlobalStateContext.Consumer>
       {g => {
+        console.log(posts, g, pageContext);
         return (
           <>
             <MetaData
