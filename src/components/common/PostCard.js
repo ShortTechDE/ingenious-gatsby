@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 import { ImgSharp } from '.'
-import { resolveUrl } from '../../utils/routing'
-import useOptions from '../../utils/use-options'
 
 const PostCard = ({ post }) => {
   const url = `/${post.slug}/`
