@@ -17,8 +17,12 @@ const Spinner = styled.div`
     text-align: center;
     display: ${props => (props.infiniteScroll ? `block` : `none`)};
     & > svg {
-        fill: #738a94;
+        fill: rgba(46, 46, 46, 0.6);
         animation: ${rotate} 3s linear infinite;
+
+        @media (prefers-color-scheme: dark) {
+          fill: rgba(255, 255, 255, 0.3);
+        }
     }
 `
 
