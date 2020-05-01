@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import BackgroundImage from 'gatsby-background-image'
 
 const WaveHeader = ({ context, children, additionalClasses }) => {
-  const Image = context.featureImageSharp && context.featureImageSharp.large && context.featureImageSharp.large.fluid ||
+  const localImage = context.featureImageSharp && context.featureImageSharp.large && context.featureImageSharp.large.fluid ||
     context.coverImageSharp && context.coverImageSharp.large && context.coverImageSharp.large.fluid;
-  const localImage = context.feature_image || context.cover_image;
+  const externalImage = context.feature_image || context.cover_image;
 
   return (
     <>
-      {Image ? 
+      {localImage ? 
         <BackgroundImage
           Tag="header"
           className={`page-header ${additionalClasses}`}
-          fluid={[`linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3))`, Image]}
+          fluid={[`linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3))`, localImage]}
           backgroundColor={`#111111`}
         >
           {children}
@@ -21,7 +21,7 @@ const WaveHeader = ({ context, children, additionalClasses }) => {
         </BackgroundImage> :
         <header 
           className={`page-header ${additionalClasses}`}
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + localImage + ")  no-repeat center / cover, #111111" }}
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + externalImage + ")  no-repeat center / cover, #111111" }}
         >
           {children}
           <figure className="wave"></figure>          
