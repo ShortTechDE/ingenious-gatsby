@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import { Layout, PostView } from '../components/common'
+import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
 import { GlobalStateContext } from "../context/GlobalState"
 
@@ -25,14 +25,12 @@ const Tag = ({ data, location, pageContext }) => {
               type="series"
             />
             <Layout isTag={true}>
-              <header className="page-header category"
-                style={{ background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + tag.feature_image + ")  no-repeat center / cover, #111111" }}>
+              <WaveHeader context={data} additionalClasses="category">
                 <div class="content container">
                   <h1 class="headline">{tag.name}</h1>
                   {tag.description ? <aside class="bio">{tag.description}</aside> : null}
                 </div>
-                <figure class="wave"></figure>
-              </header>
+              </WaveHeader>
               <main className="container overlap-with-header">
                 <PostView posts={posts} globalState={g} pageContext={pageContext} isTag={true} />
               </main>

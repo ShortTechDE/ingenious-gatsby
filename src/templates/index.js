@@ -2,9 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import BackgroundImage from 'gatsby-background-image'
 
-import { Layout, PostView } from '../components/common'
+import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
 import { GlobalStateContext } from "../context/GlobalState"
 
@@ -19,18 +18,12 @@ const Index = ({ data, location, pageContext }) => {
           <MetaData location={location} />
           <Layout isHome={true}>
             {featuredPost.map(({ node }) => (
-              <BackgroundImage
-                Tag="header"
-                className="page-header top-story"
-                fluid={[`linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3))`, node.featureImageSharp.large.fluid]}
-                backgroundColor={`#111111`}
-              >
+              <WaveHeader context={node} additionalClasses="top-story">
                 <div className="content container">
                   <h1 className="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{node.title}</h1>
                   <AniLink cover bg="#111111" direction="up" duration={1} className="button" to={`/${node.primary_tag.slug}/${node.slug}/`} data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">Lesen</AniLink>
                 </div>
-                <figure className="wave"></figure>
-              </BackgroundImage>
+              </WaveHeader>
             ))}
             <main className="container overlap-with-header" id="content-view">
               <PostView posts={posts} globalState={g} pageContext={pageContext} isHome={true} />

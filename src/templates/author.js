@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import BackgroundImage from 'gatsby-background-image'
 
-import { Layout, PostView } from '../components/common'
+import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
 import { GlobalStateContext } from "../context/GlobalState"
 
@@ -28,18 +28,12 @@ const Author = ({ data, location, pageContext }) => {
               type="profile"
             />
             <Layout isAuthor={true}>
-              <BackgroundImage
-                Tag="header"
-                className="page-header author"
-                fluid={[`linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3))`, author.coverImageSharp.large.fluid]}
-                backgroundColor={`#111111`}
-              >
+              <WaveHeader context={data} additionalClasses="author">
                 <div class="content container">
                   <h1 class="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{author.name}</h1>
                   {author.bio && <aside class="bio" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">{author.bio}</aside>}
                 </div>
-                <figure class="wave"></figure>
-              </BackgroundImage>
+              </WaveHeader>
               <main className="container overlap-with-header">
                 <PostView posts={posts} globalState={g} pageContext={pageContext} isAuthor={true} />
               </main>
