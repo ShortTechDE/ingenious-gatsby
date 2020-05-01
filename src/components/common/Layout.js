@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+
 import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Navigation, DocumentHead } from '.'
@@ -17,9 +17,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
   return (
     <>
       <DocumentHead site={site} className={bodyClass} />
-      
-      <input type="checkbox" id="gn-menustate" className="gn-menustate" aria-hidden="true" />
 
+      <input type="checkbox" id="gn-menustate" className="gn-menustate" aria-hidden="true" />
       <nav id="globalnav">
         <div className="content container">
           <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
@@ -40,8 +39,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       </nav>
 
       <main>
+        {/* Main content will be inserted here*/}
         {children}
       </main>
+
       <footer>
         <div className="container">
           <ul className="columns ">

@@ -25,9 +25,7 @@ const Index = ({ data, location, pageContext }) => {
                 </div>
               </WaveHeader>
             ))}
-            <main className="container overlap-with-header" id="content-view">
-              <PostView posts={posts} globalState={g} pageContext={pageContext} isHome={true} />
-            </main>
+            <PostView posts={posts} globalState={g} pageContext={pageContext} />
           </Layout>
         </>
       )}}

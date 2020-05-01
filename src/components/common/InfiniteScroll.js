@@ -63,10 +63,10 @@ class InfiniteScroll extends React.Component {
     }
 
     return (
-      <React.Fragment>
+      <>
         {this.props.children}
         {sentinel}
-      </React.Fragment>
+      </>
     )
   }
 }

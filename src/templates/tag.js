@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 
 import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
+
 import { GlobalStateContext } from "../context/GlobalState"
 
 /**
@@ -24,16 +25,14 @@ const Tag = ({ data, location, pageContext }) => {
               location={location}
               type="series"
             />
-            <Layout isTag={true}>
+            <Layout>
               <WaveHeader context={tag} additionalClasses="category">
                 <div class="content container">
                   <h1 class="headline">{tag.name}</h1>
                   {tag.description ? <aside class="bio">{tag.description}</aside> : null}
                 </div>
               </WaveHeader>
-              <main className="container overlap-with-header">
-                <PostView posts={posts} globalState={g} pageContext={pageContext} isTag={true} />
-              </main>
+              <PostView posts={posts} globalState={g} pageContext={pageContext} />
             </Layout>
           </>
         )
@@ -44,16 +43,11 @@ const Tag = ({ data, location, pageContext }) => {
 
 Tag.propTypes = {
   data: PropTypes.shape({
-    ghostTag: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string,
-    }),
+    ghostTag: PropTypes.object.isRequired,
     allGhostPost: PropTypes.object.isRequired,
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-  pageContext: PropTypes.object,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 }
 
 export default Tag
