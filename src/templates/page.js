@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
-import { Layout } from '../components/common'
+import { Layout, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
@@ -23,13 +23,11 @@ const Page = ({ data, location }) => {
         <style type="text/css">{`${page.codeinjection_styles}`}</style>
       </Helmet>
       <Layout>
-        <header className="page-header"
-          style={{background: "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url(" + page.feature_image + ")  no-repeat center / cover, #111111"}}>
+        <WaveHeader context={page}>
           <div className="content container">
             <h1 className="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{page.title}</h1>
           </div>
-          <figure className="wave"></figure>
-        </header>        
+        </WaveHeader>        
         <section className="article container">
           <div
               className="content"

@@ -15,14 +15,40 @@ const gatsbyNodeQuery = `{
         excerpt
         custom_excerpt
         visibility
+        
+        # Image scraping and thumbnail creating
+        featureImageSharp {
+          base
+          thumbnail: childImageSharp {
+            fluid(maxHeight: 500) {
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
+            }
+          }
+          large: childImageSharp {
+            fluid(maxWidth: 2000, quality: 90) {
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
+            }
+          }
+        }
+  
         # Dates formatted
         created_at_pretty: created_at(formatString: "D MMM YYYY")
         published_at_pretty: published_at(formatString: "D MMM YYYY")
         updated_at_pretty: updated_at(formatString: "D MMM YYYY")
+        
         # Dates unformatted
         created_at
         published_at
         updated_at
+        
         # SEO
         meta_title
         meta_description
@@ -32,6 +58,7 @@ const gatsbyNodeQuery = `{
         twitter_description
         twitter_image
         twitter_title
+
         # Authors
         authors {
           name
@@ -44,6 +71,7 @@ const gatsbyNodeQuery = `{
           facebook
           website
         }
+
         primary_author {
           name
           slug
@@ -55,6 +83,7 @@ const gatsbyNodeQuery = `{
           facebook
           website
         }
+
         # Tags
         primary_tag {
           name
@@ -76,9 +105,11 @@ const gatsbyNodeQuery = `{
           meta_title
           visibility
         }
+
         # Content
         plaintext
         html
+
         # Additional fields
         url
         canonical_url
@@ -89,27 +120,10 @@ const gatsbyNodeQuery = `{
         codeinjection_styles
         comment_id
         reading_time
-        # Transformed html
-        childHtmlRehype {
-          html
-          tableOfContents
-        }
-        # ImgSharp
-        featureImageSharp {
-          base
-          childImageSharp {
-            fluid(maxWidth: 1040) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
-        }
       }
     }
   }
+
   allGhostTag(sort: { order: ASC, fields: name }) {
     edges {
       node {
@@ -119,6 +133,7 @@ const gatsbyNodeQuery = `{
       }
     }
   }
+
   allGhostAuthor(sort: { order: ASC, fields: name }) {
     edges {
       node {
@@ -128,6 +143,7 @@ const gatsbyNodeQuery = `{
       }
     }
   }
+
   allGhostPage(sort: { order: ASC, fields: published_at }) {
     edges {
       node {
@@ -136,6 +152,7 @@ const gatsbyNodeQuery = `{
       }
     }
   }
+
   site {
     siteMetadata {
       postsPerPage

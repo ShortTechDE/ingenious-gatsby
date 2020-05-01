@@ -83,6 +83,10 @@ module.exports = {
             imgTags: [`feature_image`],
           },
           {
+            type: `GhostAuthor`,
+            imgTags: [`cover_image`],
+          },
+          {
             type: `GhostSettings`,
             imgTags: [`cover_image`],
           },
