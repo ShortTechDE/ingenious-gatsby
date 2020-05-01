@@ -2,12 +2,6 @@ import React from "react"
 
 /**
  * Infinite Scroll
- *
- * Further info 👉🏼 https://github.com/baobabKoodaa/gatsby-starter-infinite-scroll
- *
- * Global state is needed instead of component state, in order
- * to maintain scroll position after page switches.
- *
  */
 
 export const GlobalStateContext = React.createContext({
