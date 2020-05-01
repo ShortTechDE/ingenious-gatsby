@@ -1181,7 +1181,8 @@ section.branding {
   position: relative;
   z-index: 10;
   margin-top: -200px;
-
+  margin-bottom: 150px;
+  
   div.row {
     width: 100%;
     display: block;
@@ -1306,7 +1307,7 @@ section.branding {
       span.char {
         font-weight: 600;
         font-size: 56px;
-        display: block;
+        display: inline-block;
         margin-top: 50px;
         color: #111;
       }
@@ -1320,21 +1321,22 @@ section.branding {
   }
 
   div.text {
-    padding: 50px 15%;
+    padding: 50px 20%;
+
+    @media #{$small-device} {
+      padding: 1em 8%;
+    }
 
     p.description {
+      color: rgb(90, 90, 90);
       font-weight: 400;
-      line-height: 1.5em;
+      font-size: 16px;
+      line-height: 1.55;
+
+      @media (prefers-color-scheme: dark) {
+        color: #999;
+      }
     }
-  }
-}
-
-section.branding {
-  margin-bottom: 350px;
-
-  @media #{$ultra-large} {
-    margin-top: 0;
-    margin-bottom: 550px;
   }
 }
 
