@@ -28,7 +28,7 @@ const Author = ({ data, location, pageContext }) => {
               type="profile"
             />
             <Layout isAuthor={true}>
-              <WaveHeader context={data} additionalClasses="author">
+              <WaveHeader context={author} additionalClasses="author">
                 <div class="content container">
                   <h1 class="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{author.name}</h1>
                   {author.bio && <aside class="bio" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">{author.bio}</aside>}

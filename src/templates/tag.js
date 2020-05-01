@@ -25,7 +25,7 @@ const Tag = ({ data, location, pageContext }) => {
               type="series"
             />
             <Layout isTag={true}>
-              <WaveHeader context={data} additionalClasses="category">
+              <WaveHeader context={tag} additionalClasses="category">
                 <div class="content container">
                   <h1 class="headline">{tag.name}</h1>
                   {tag.description ? <aside class="bio">{tag.description}</aside> : null}
