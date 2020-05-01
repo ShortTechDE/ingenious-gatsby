@@ -9,6 +9,7 @@ const PostSuggestion = ({ post }) => (
       Tag="article"
       className="next-article"
       fluid={[`linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0.7))`, post.featureImageSharp.childImageSharp.fluid]}
+      backgroundColor={`#111111`}
       data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
       <div class="content">
         <span>{post.primary_tag.name}</span>
