@@ -5,12 +5,13 @@ import Helmet from 'react-helmet'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
-import { Layout } from '../components/common'
+import { Layout, PostSuggestion } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
-* Single post view (/:slug)
+* Single post view
 */
+
 const Post = ({ data, location }) => {
   const post = data.ghostPost
   const readingTime = readingTimeHelper(post)
@@ -50,6 +51,12 @@ const Post = ({ data, location }) => {
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </section>
+        <aside className="post-suggestions">
+          <div className="container">
+            {data.prev ? <PostSuggestion post={data.prev} /> : null}
+            {data.next ? <PostSuggestion post={data.next} /> : null}
+          </div>
+        </aside>
       </Layout>
     </>
   )
@@ -58,20 +65,54 @@ const Post = ({ data, location }) => {
 Post.propTypes = {
   data: PropTypes.shape({
     ghostPost: PropTypes.shape({
-      codeinjection_styles: PropTypes.object,
+      codeinjection_styles: PropTypes.string,
+      url: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       html: PropTypes.string.isRequired,
+      custom_excerpt: PropTypes.string,
       feature_image: PropTypes.string,
+      featured: PropTypes.bool,
+      tags: PropTypes.arrayOf(
+        PropTypes.object.isRequired,
+      ),
+      authors: PropTypes.arrayOf(
+        PropTypes.object.isRequired,
+      ).isRequired,
+      primary_tag: PropTypes.shape({
+        name: PropTypes.string,
+        slug: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+      }),
+      published_at: PropTypes.string.isRequired,
+      published_at_pretty: PropTypes.string.isRequired,
+      featureImageSharp: PropTypes.object,
+      childHtmlRehype: PropTypes.shape({
+        html: PropTypes.string,
+        tableOfContents: PropTypes.arrayOf(
+          PropTypes.object,
+        ),
+      }),
     }).isRequired,
+    prev: PropTypes.object,
+    next: PropTypes.object,
   }).isRequired,
   location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object,
 }
 
 export default Post
 
 export const postQuery = graphql`
-  query($slug: String!) {
+  query($slug: String!, $prev: String!, $next: String!) {
     ghostPost(slug: { eq: $slug }) {
+      ...GhostPostFields
+    }
+    prev: ghostPost(slug: { eq: $prev }) {
+      ...GhostPostFields
+    }
+    next: ghostPost(slug: { eq: $next }) {
       ...GhostPostFields
     }
   }
