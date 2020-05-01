@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+
 import { ImgSharp } from '.'
 
 const PostCard = ({ post }) => {
-  const url = `/${post.primary_tag.slug}/${post.slug}/`
+  const url = `/${post.slug}/`
   const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.thumbnail && post.featureImageSharp.thumbnail.fluid
 
   return (
@@ -13,7 +14,7 @@ const PostCard = ({ post }) => {
         <ImgSharp fluidClass="thumbnail" srcClass="thumbnail" fluidImg={fluidFeatureImg} srcImg={post.feature_image} alt={post.title} />
       </AniLink>
       <div className="content">
-        {post.primary_tag ? <AniLink cover bg="#111111" direction="up" duration={1} to={post.primary_tag.slug} className="category">{post.primary_tag.name}</AniLink> : null}
+        {post.primary_tag ? <AniLink cover bg="#111111" direction="up" duration={1} to={`/tag/${post.primary_tag.slug}/`} className="category">{post.primary_tag.name}</AniLink> : null}
         <h1 className="title">{post.title}</h1>
         <p className="text-preview">
           {post.excerpt}

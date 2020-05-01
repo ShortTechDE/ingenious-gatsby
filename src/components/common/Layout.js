@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { Navigation } from '.'
+
+import { Navigation, DocumentHead } from '.'
 import packageJson from '../../../package.json'
 
 // Styles
@@ -11,19 +11,14 @@ import '../../styles/main.scss'
 
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
   const site = data.allGhostSettings.edges[0].node
-  const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
-  const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
+  const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}/` : null
+  const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}/` : null
 
   return (
     <>
-      <Helmet>
-        <html lang={site.lang} />
-        <style type="text/css">{`${site.codeinjection_styles}`}</style>
-        <body className={bodyClass} />
-      </Helmet>
+      <DocumentHead site={site} className={bodyClass} />
 
       <input type="checkbox" id="gn-menustate" className="gn-menustate" aria-hidden="true" />
-
       <nav id="globalnav">
         <div className="content container">
           <AniLink cover bg="#111111" direction="up" duration={1} className="brand" to="/" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
@@ -44,8 +39,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       </nav>
 
       <main>
+        {/* Main content will be inserted here*/}
         {children}
       </main>
+
       <footer>
         <div className="container">
           <ul className="columns ">
@@ -59,10 +56,10 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Rechtliches</span>
                 <ul className="links">
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={1} to="/impressum" className="link">Impressum</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/impressum/" className="link">Impressum</AniLink>
                   </li>
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={1} to="/datenschutzerklaerung" className="link">Datenschutz</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/datenschutzerklaerung/" className="link">Datenschutz</AniLink>
                   </li>
                 </ul>
               </div>
@@ -75,7 +72,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href="mailto:info@shorttech.de" target="_blank" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
-                    <AniLink cover bg="#111111" direction="up" duration={1} to="/branding" className="link">Branding</AniLink>
+                    <AniLink cover bg="#111111" direction="up" duration={1} to="/branding/" className="link">Branding</AniLink>
                   </li>
                   <li className="entry">
                     <a href="https://github.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">GitHub</a>
@@ -91,7 +88,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="link">Twitter</a>
                   </li>
                   <li className="entry">
-                    <a href="https://t.me/ShortTech" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
+                    <a href="https://t.me/ShortTech/" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
                   </li>
                   <li className="entry">
                     <a href="https://www.instagram.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">Instagram</a>

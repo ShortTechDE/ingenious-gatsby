@@ -42,17 +42,17 @@ class PostView extends React.Component {
       globalState: g,
       pageContext,
       posts,
-      isHome,
-      isAuthor,
     } = this.props
 
     const items = (!g.isInitializing() ? g.items : posts)
 
     return (
       <>
-        <InfiniteScroll throttle={300} threshold={600} isLoading={g.isLoading} hasMore={g.hasMore(pageContext)} onLoadMore={g.loadMore}>
-          <PostList posts={items} />
-        </InfiniteScroll>
+        <main className="container overlap-with-header" id="content-view">
+          <InfiniteScroll throttle={300} threshold={600} isLoading={g.isLoading} hasMore={g.hasMore(pageContext)} onLoadMore={g.loadMore}>
+            <PostList posts={items} />
+          </InfiniteScroll>
+        </main>
 
         {/* Loading spinner. */}
         {g.isLoading &&
@@ -84,8 +84,6 @@ PostView.propTypes = {
   globalState: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
-  isHome: PropTypes.bool,
-  isAuthor: PropTypes.bool,
 }
 
 export default PostView

@@ -33,9 +33,7 @@ const Author = ({ data, location, pageContext }) => {
                   {author.bio && <aside class="bio" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">{author.bio}</aside>}
                 </div>
               </WaveHeader>
-              <main className="container overlap-with-header">
-                <PostView posts={posts} globalState={g} pageContext={pageContext} isAuthor={true} />
-              </main>
+              <PostView posts={posts} globalState={g} pageContext={pageContext} />
             </Layout>
           </>
         )
@@ -45,23 +43,12 @@ const Author = ({ data, location, pageContext }) => {
 }
 
 Author.propTypes = {
-    data: PropTypes.shape({
-        ghostAuthor: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            cover_image: PropTypes.string,
-            profile_image: PropTypes.string,
-            website: PropTypes.string,
-            bio: PropTypes.string,
-            location: PropTypes.string,
-            facebook: PropTypes.string,
-            twitter: PropTypes.string,
-        }),
-        allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
-    pageContext: PropTypes.object,
+  data: PropTypes.shape({
+    ghostAuthor: PropTypes.object.isRequired,
+    allGhostPost: PropTypes.object.isRequired,
+  }).isRequired,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 }
 
 export default Author
