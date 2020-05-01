@@ -597,15 +597,6 @@ div.post-list {
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         object-fit: cover;
-        animation: betterUnblur 1s ease;
-
-        @keyframes betterUnblur {
-          from {
-            filter: blur(30px);
-          } to {
-            filter: blur(0);
-          }
-        }
       }
     }
 
