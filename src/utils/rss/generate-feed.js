@@ -1,6 +1,7 @@
 const cheerio = require(`cheerio`)
 const tagsHelper = require(`@tryghost/helpers`).tags
 const _ = require(`lodash`)
+const packageJson = require(`../../../package.json`)
 
 const generateItem = function generateItem(post) {
   const itemUrl = post.canonical_url || post.url
@@ -54,7 +55,7 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
         title: siteTitle,
         description: siteDescription,
         // generator: `Ghost ` + data.safeVersion,
-        generator: `Ghost 3.0`,
+        generator: `ShortTech ${packageJson.version}`,
         feed_url: `${siteConfig.siteUrl}/rss/`,
         site_url: `${siteConfig.siteUrl}/`,
         image_url: `${siteConfig.siteUrl}/${siteConfig.siteIcon}`,
