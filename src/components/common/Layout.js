@@ -112,7 +112,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span>🏳️‍🌈 aus Greifswald</span>
                 <span>🏳️‍🌈 aus Groß-Umstadt</span>
                 <span>🏳️‍🌈 aus Frankfurt</span>
-                <span>🏳️‍🌈 aus Trebsen</span>
+                <span>:dab: aus Oschatz</span>
               </div>
             </li>
           </ul>

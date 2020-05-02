@@ -16,7 +16,7 @@
 </p>
 <p align="center">
   <a href="https://app.netlify.com/sites/shorttech/deploys">
-    <img src="https://api.netlify.com/api/v1/badges/9882de2b-16a4-408b-94de-a354c2cd91e7/deploy-status" alt="Netlify Status" />
+    <img src="https://api.netlify.com/api/v1/badges/10bebe62-3fe6-4a14-870d-ab0423187a44/deploy-status" alt="Netlify Status" />
   </a>
   <a href="https://twitter.com/ShortTechDE">
     <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/ShortTechDE?style=social">
