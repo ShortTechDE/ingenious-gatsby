@@ -1,10 +1,10 @@
 {
   "development": {
-    "apiUrl": "https://shorttech.de",
+    "apiUrl": "https://cms.shorttech.de",
     "contentApiKey": "cf314e70cf6e7fede4c2ad514a"
   },
   "production": {
-    "apiUrl": "https://shorttech.de",
+    "apiUrl": "https://cms.shorttech.de",
     "contentApiKey": "cf314e70cf6e7fede4c2ad514a"
   }
 }

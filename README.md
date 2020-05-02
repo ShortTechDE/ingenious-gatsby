@@ -12,11 +12,11 @@
 </h3>
 
 <p align="center">
-  ingenious-gatsby is the GatsbyJS and GraphQL-powered frontend that powers ShortTech. The site is served by <a href="https://netlify.com">Netlify</a>. On the backend site, ShortTech is powered by a headless <a href="https://ghost.org">Ghost</a> installation.
+  ingenious-gatsby is the GatsbyJS and GraphQL-powered frontend that powers ShortTech. The site is generated and compiled by <a href="https://www.gatsbyjs.com/">Gatsby Cloud</a> and is served by <a href="https://netlify.com">Netlify</a>. On the backend site, ShortTech is powered by a headless <a href="https://ghost.org">Ghost</a> installation.
 </p>
 <p align="center">
   <a href="https://app.netlify.com/sites/shorttech/deploys">
-    <img src="https://api.netlify.com/api/v1/badges/9882de2b-16a4-408b-94de-a354c2cd91e7/deploy-status" alt="Netlify Status" />
+    <img src="https://api.netlify.com/api/v1/badges/10bebe62-3fe6-4a14-870d-ab0423187a44/deploy-status" alt="Netlify Status" />
   </a>
   <a href="https://twitter.com/ShortTechDE">
     <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/ShortTechDE?style=social">
