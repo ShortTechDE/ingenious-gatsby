@@ -14,7 +14,7 @@ import { MetaData } from '../components/common/meta'
 
 const Post = ({ data, location }) => {
   const post = data.ghostPost
-  const readingTime = readingTimeHelper(post)
+  const readingTime = readingTimeHelper(post, {minute: 'Nur eine Minute Lesezeit', minutes: '% Minuten Lesezeit'})
 
   return (
     <>
