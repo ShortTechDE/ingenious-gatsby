@@ -12,5 +12,5 @@ module.exports = {
   shortTitle: `ShortTech`, // Used for App manifest e.g. Mobile Home Screen
   siteIcon: `logo.png`, // Logo in /static dir used for SEO, RSS, and App manifest
   backgroundColor: `#111111`, // Used for Offline Manifest
-  themeColor: `#1688A7`, // Used for Offline Manifest
+  themeColor: `#FFFFFF`, // Used for Offline Manifest
 }
