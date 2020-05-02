@@ -4,7 +4,7 @@ import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import BackgroundImage from 'gatsby-background-image'
 
 const PostSuggestion = ({ post }) => (
-  <AniLink cover bg="#111111" direction="up" duration={1} to={`/${post.primary_tag.slug}/${post.slug}/`}>
+  <AniLink cover bg="#111111" direction="up" duration={1} to={`/${post.slug}/`}>
     <BackgroundImage
       Tag="article"
       className="next-article"
