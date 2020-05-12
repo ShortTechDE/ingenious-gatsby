@@ -33,6 +33,14 @@ try {
 module.exports = {
   siteMetadata: siteConfig,
   plugins: [
+    // Tracking with Fathom Lite
+    {
+      resolve: 'gatsby-plugin-fathom',
+      options: {
+        trackingUrl: 'analytics.shorttech.de',
+        siteId: 'FFBAU'
+      }
+    },
     // Animation/Transition plugins
     {
       resolve: `gatsby-plugin-scroll-reveal`,
