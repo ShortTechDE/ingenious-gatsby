@@ -20,7 +20,7 @@ class PostView extends React.Component {
     return (
       <>
         <main className="container overlap-with-header" id="content-view">
-          <InfiniteScroll throttle={300} threshold={600} isLoading={g.isLoading} hasMore={g.hasMore(pageContext)} onLoadMore={g.loadMore(pageContext)}>
+          <InfiniteScroll throttle={50} threshold={1000} isLoading={g.isLoading} hasMore={g.hasMore(pageContext)} onLoadMore={g.loadMore(pageContext)}>
             <PostList posts={items} />
           </InfiniteScroll>
         </main>
