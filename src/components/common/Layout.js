@@ -88,9 +88,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="link">Twitter</a>
                   </li>
                   <li className="entry">
-                    <a href="https://t.me/ShortTech/" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
-                  </li>
-                  <li className="entry">
                     <a href="https://www.instagram.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
                   </li>
                 </ul>
@@ -110,9 +107,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span>:dab: aus Bürgstadt</span>
                 <span>🏳️‍🌈 aus Leipzig</span>
                 <span>🏳️‍🌈 aus Greifswald</span>
+                <span>🧂 aus Oschatz</span>
                 <span>🏳️‍🌈 aus Groß-Umstadt</span>
-                <span>🏳️‍🌈 aus Frankfurt</span>
-                <span>:dab: aus Oschatz</span>
+                <span>🏳️‍🌈 aus Frankfurt</span>             
               </div>
             </li>
           </ul>
