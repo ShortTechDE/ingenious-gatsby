@@ -1124,7 +1124,8 @@ aside.post-suggestions {
       display: flex;
       flex: 1;
       transition: all $default-transition-time;
-
+      margin: 0 20px;
+      
       &:hover {
         transform: translate(0, -0.3em);
       }
@@ -1139,7 +1140,6 @@ aside.post-suggestions {
       align-items: center;
       padding: 30px;
       border-radius: 10px;
-      margin: 0 20px;
       width: 100%;
       overflow: hidden;
       color: #FFF;
