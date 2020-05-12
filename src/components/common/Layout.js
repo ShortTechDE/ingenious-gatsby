@@ -88,9 +88,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     <a href={twitterUrl} target="_blank" rel="noopener noreferrer" className="link">Twitter</a>
                   </li>
                   <li className="entry">
-                    <a href="https://t.me/ShortTech/" target="_blank" rel="noopener noreferrer" className="link">Telegram</a>
-                  </li>
-                  <li className="entry">
                     <a href="https://www.instagram.com/ShortTechDE/" target="_blank" rel="noopener noreferrer" className="link">Instagram</a>
                   </li>
                 </ul>

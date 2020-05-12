@@ -16,7 +16,7 @@ const Index = ({ data, location, pageContext }) => {
       { g => {return (
         <>
           <MetaData location={location} />
-          <Layout isHome={true}>
+          <Layout>
             {featuredPost.map(({ node }) => (
               <WaveHeader context={node} additionalClasses="top-story">
                 <div className="content container">
