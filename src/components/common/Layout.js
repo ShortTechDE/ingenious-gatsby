@@ -110,9 +110,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span>:dab: aus Bürgstadt</span>
                 <span>🏳️‍🌈 aus Leipzig</span>
                 <span>🏳️‍🌈 aus Greifswald</span>
+                <span>🧂 aus Oschatz</span>
                 <span>🏳️‍🌈 aus Groß-Umstadt</span>
-                <span>🏳️‍🌈 aus Frankfurt</span>
-                <span>:dab: aus Oschatz</span>
+                <span>🏳️‍🌈 aus Frankfurt</span>             
               </div>
             </li>
           </ul>
