@@ -5,7 +5,10 @@
   "license": "SEE LICENSE IN LICENSE",
   "author": "ShortTech <opensource@shorttech.de>",
   "contributors": [
-    "Tobias Möritz <tobias@moeritz.cc> (https://moeritz.io)"
+    "Tobias Möritz <tobias@moeritz.cc> (https://moeritz.io)",
+    "Florentin Walter <hello@florentin.design> (https://florentin.design)",
+    "Thilo Billerbeck <thilo.billerbeck@officerent.de> (https://www.officerent.de)",
+    "Tobias Greilach"
   ],
   "homepage": "https://shorttech.de/",
   "repository": "github:ShortTechDE/ingenious-gatsby",
