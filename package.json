@@ -2,22 +2,23 @@
   "name": "ingenious-gatsby",
   "description": "The frontend that powers ShortTech. Made with lots of Pride, GraphQL and GatsbyJS.",
   "version": "2.4.1",
-  "license": "All rights reserved.",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "ShortTech <opensource@shorttech.de>",
+  "contributors": [
+    "Tobias Möritz <tobias@moeritz.cc> (https://moeritz.io)",
+    "Florentin Walter <hello@florentin.design> (https://florentin.design)",
+    "Thilo Billerbeck <thilo.billerbeck@officerent.de> (https://www.officerent.de)",
+    "Tobias Greilach"
+  ],
   "homepage": "https://shorttech.de/",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShortTechDE/ingenious-gatsby.git"
-  },
+  "repository": "github:ShortTechDE/ingenious-gatsby",
   "resolutions": {
     "sharp": "0.25.2"
   },
   "engines": {
     "node": ">= 10.13.0"
   },
-  "bugs": {
-    "url": "https://github.com/ShortTechDE/ingenious-gatsby/issues"
-  },
+  "bugs": "https://github.com/ShortTechDE/ingenious-gatsby/issues",
   "keywords": [
     "gatsby",
     "ghost"
