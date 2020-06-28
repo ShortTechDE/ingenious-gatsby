@@ -55,8 +55,8 @@ const Post = ({ data, location }) => {
         </section>
         <aside className="post-suggestions">
           <div className="container">
-            {data.prev ? <PostSuggestion post={data.prev} /> : null}
             {data.next ? <PostSuggestion post={data.next} /> : null}
+            {data.prev ? <PostSuggestion post={data.prev} /> : null}
           </div>
         </aside>
       </Layout>
