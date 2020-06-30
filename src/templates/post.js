@@ -57,6 +57,7 @@ const Post = ({ data, location }) => {
             className="content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
+          <hr className="mobile-only" />
         </section>
         <aside className="post-suggestions">
           <div className="container">
