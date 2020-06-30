@@ -3,14 +3,17 @@
     "standard",
     "standard-react",
     "plugin:ghost/node",
-    "plugin:ghost/ember",
     "plugin:import/errors",
     "plugin:react/recommended",
     "prettier",
     "prettier/react",
     "prettier/standard"
   ],
-  "plugins": ["react", "import", "ghost"],
+  "plugins": [
+    "react",
+    "import",
+    "ghost"
+  ],
   "parser": "babel-eslint",
   "rules": {
     "react/prefer-stateless-function": "off",
