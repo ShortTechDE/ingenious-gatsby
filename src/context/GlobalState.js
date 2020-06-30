@@ -65,9 +65,9 @@ export class GlobalStateProvider extends React.Component {
     this.setState({ isLoading: false }) // Allow triggering infinite scroll load
   }
 
-  exists = id => -1 < this.state.ids.indexOf(id)
+  exists = id => this.state.ids.indexOf(id) > -1
 
-  findCursor = (pageContext, ids) => pageContext.postIds.reduce((pos, id, i) => (-1 < ids.indexOf(id) && i === pos && i + 1 || pos), 0)
+  findCursor = (pageContext, ids) => pageContext.postIds.reduce((pos, id, i) => (ids.indexOf(id) > -1 && i === pos && i + 1 || pos), 0)
 
   addItems = (pageContext, posts) => {
     if (this.state.isInitializing()) {

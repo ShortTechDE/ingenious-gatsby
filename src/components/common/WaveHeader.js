@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import BackgroundImage from 'gatsby-background-image'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const WaveHeader = ({ context, children, additionalClasses }) => {
   const localImage = context.featureImageSharp && context.featureImageSharp.large && context.featureImageSharp.large.fluid ||

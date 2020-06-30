@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Img from "gatsby-image"
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const ImgSharp = ({ fluidClass, fluidImg, srcClass, srcImg, alt }) => (
   <>

@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { graphql } from 'gatsby'
+import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
 import { Layout, PostSuggestion, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
@@ -40,10 +40,15 @@ const Post = ({ data, location }) => {
             </div>
             <h1 className="headline" data-sal="slide-up" data-sal-duration="1000" data-sal-easing="ease" data-sal-delay="100">{post.title}</h1>
             <div className="authors" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="500">
-              von&ensp;
-              <AniLink cover bg="#111111" direction="up" duration={1} to={`/author/${post.primary_author.slug}/`}>
-                {post.primary_author.name}
-              </AniLink>
+              von&nbsp;
+              {post.authors.map((author, i) =>
+                <> 
+                  <AniLink cover bg="#111111" direction="up" duration={1} to={`/author/${author.slug}/`}>
+                    {author.name}
+                  </AniLink>
+                  {post.authors[i+1] ? <>&nbsp;&amp;&nbsp;</> : null}
+                </>
+              )}
             </div>
           </div>
         </WaveHeader>
@@ -52,6 +57,7 @@ const Post = ({ data, location }) => {
             className="content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
+          <hr className="mobile-only" />
         </section>
         <aside className="post-suggestions">
           <div className="container">

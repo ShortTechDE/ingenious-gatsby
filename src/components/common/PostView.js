@@ -1,7 +1,7 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
-import { PostList, Pagination, InfiniteScroll } from '.'
+import { InfiniteScroll, Pagination, PostList } from '.'
 
 class PostView extends React.Component {
   constructor(props) {

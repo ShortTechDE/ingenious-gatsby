@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { graphql } from 'gatsby'
 
+import { GlobalStateContext } from "../context/GlobalState"
 import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
-import { GlobalStateContext } from "../context/GlobalState"
 
 const Index = ({ data, location, pageContext }) => {
   const posts = data.posts.edges
@@ -17,14 +17,12 @@ const Index = ({ data, location, pageContext }) => {
         <>
           <MetaData location={location} />
           <Layout>
-            {featuredPost.map(({ node }) => (
-              <WaveHeader context={node} additionalClasses="top-story">
-                <div className="content container">
-                  <h1 className="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{node.title}</h1>
-                  <AniLink cover bg="#111111" direction="up" duration={1} className="button" to={`/${node.slug}/`} data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">Lesen</AniLink>
-                </div>
-              </WaveHeader>
-            ))}
+            <WaveHeader context={featuredPost[0].node} additionalClasses="top-story">
+              <div className="content container">
+                <h1 className="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{featuredPost[0].node.title}</h1>
+                <AniLink cover bg="#111111" direction="up" duration={1} className="button" to={`/${featuredPost[0].node.slug}/`} data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="100">Lesen</AniLink>
+              </div>
+            </WaveHeader>
             <PostView posts={posts} globalState={g} pageContext={pageContext} />
           </Layout>
         </>
