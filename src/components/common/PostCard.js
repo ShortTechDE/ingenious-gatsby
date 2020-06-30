@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 import { ImgSharp } from '.'
 

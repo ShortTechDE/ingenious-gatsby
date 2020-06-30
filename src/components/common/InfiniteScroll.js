@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const throttle = require(`lodash.throttle`)
 
@@ -32,7 +32,7 @@ class InfiniteScroll extends React.Component {
   }
 
   checkWindowScroll = () => {
-    //console.log("Window height " + window.innerHeight + " Sentinel boundingRectTop " + this.sentinel.getBoundingClientRect().top)
+    // console.log("Window height " + window.innerHeight + " Sentinel boundingRectTop " + this.sentinel.getBoundingClientRect().top)
     if (this.props.isLoading) {
       return
     }
@@ -44,7 +44,7 @@ class InfiniteScroll extends React.Component {
   }
 
   render() {
-    const sentinel = <div ref={i => this.sentinel = i} />
+    const sentinel = <div ref={i => (this.sentinel = i)} />
 
     if (this.props.render) {
       return this.props.render({

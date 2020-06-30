@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
 
-import { Navigation, DocumentHead } from '.'
 import packageJson from '../../../package.json'
+import { DocumentHead, Navigation } from '.'
 
 // Styles
 import '../../styles/main.scss'
@@ -12,7 +12,6 @@ import '../../styles/main.scss'
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
   const site = data.allGhostSettings.edges[0].node
   const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}/` : null
-  const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}/` : null
 
   return (
     <>
@@ -39,7 +38,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
       </nav>
 
       <main>
-        {/* Main content will be inserted here*/}
+        {/* Main content will be inserted here */}
         {children}
       </main>
 
@@ -69,7 +68,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Allgemein</span>
                 <ul className="links">
                   <li className="entry">
-                    <a href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;info&#x40;shorttech.de" target="_blank" className="link">Kontakt</a>
+                    <a href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;info&#x40;shorttech.de" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
                     <AniLink cover bg="#111111" direction="up" duration={1} to="/branding/" className="link">Branding</AniLink>

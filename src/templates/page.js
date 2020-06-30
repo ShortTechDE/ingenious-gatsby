@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { graphql } from 'gatsby'
 
 import { Layout, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'

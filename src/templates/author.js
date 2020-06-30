@@ -1,10 +1,10 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { graphql } from 'gatsby'
 
+import { GlobalStateContext } from "../context/GlobalState"
 import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
-import { GlobalStateContext } from "../context/GlobalState"
 
 /**
 * Author page (/autor/:slug)
@@ -13,8 +13,6 @@ import { GlobalStateContext } from "../context/GlobalState"
 const Author = ({ data, location, pageContext }) => {
   const author = data.ghostAuthor
   const posts = data.allGhostPost.edges
-  const twitterUrl = author.twitter ? `https://twitter.com/${author.twitter.replace(/^@/, ``)}` : null
-  const facebookUrl = author.facebook ? `https://www.facebook.com/${author.facebook.replace(/^\//, ``)}` : null
 
   return (
     <GlobalStateContext.Consumer>
@@ -26,11 +24,11 @@ const Author = ({ data, location, pageContext }) => {
               location={location}
               type="profile"
             />
-            <Layout isAuthor={true}>
+            <Layout isAuthor>
               <WaveHeader context={author} additionalClasses="author">
-                <div class="content container">
-                  <h1 class="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{author.name}</h1>
-                  {author.bio && <aside class="bio" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">{author.bio}</aside>}
+                <div className="content container">
+                  <h1 className="headline" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">{author.name}</h1>
+                  {author.bio && <aside className="bio" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="200">{author.bio}</aside>}
                 </div>
               </WaveHeader>
               <PostView posts={posts} globalState={g} pageContext={pageContext} />

@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import BackgroundImage from 'gatsby-background-image'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const PostSuggestion = ({ post }) => (
   <AniLink cover bg="#111111" direction="up" duration={1} to={`/${post.slug}/`}>
@@ -11,9 +11,9 @@ const PostSuggestion = ({ post }) => (
       fluid={[`linear-gradient(to left, rgba(0,0,0,0.2), rgba(0,0,0,0.7))`, post.featureImageSharp.thumbnail.fluid]}
       backgroundColor={`#111111`}
       data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease">
-      <div class="content">
+      <div className="content">
         <span>{post.primary_tag.name}</span>
-        <h1 class="title">{post.title}</h1>
+        <h1 className="title">{post.title}</h1>
       </div>
     </BackgroundImage>
   </AniLink>

@@ -1,20 +1,20 @@
-const _ = require(`lodash`)
-const { paginate } = require(`gatsby-awesome-pagination`)
-const { resolveUrl } = require(`./src/utils/routing`)
-const fs = require(`fs`)
-const { createContentDigest } = require(`gatsby-core-utils`)
+const _ = require('lodash')
+const { paginate } = require('gatsby-awesome-pagination')
+const { resolveUrl } = require('./src/utils/routing')
+const fs = require('fs')
+const { createContentDigest } = require('gatsby-core-utils')
 
-const gatsbyNodeQuery = require(`./src/utils/gatsbyNodeQuery`)
-const infiniteScroll = require(`./src/utils/infinite-scroll.js`)
+const gatsbyNodeQuery = require('./src/utils/gatsbyNodeQuery')
+const infiniteScroll = require('./src/utils/infinite-scroll.js')
 
 // Disable sourcemaps in production
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
   if (getConfig().mode === 'production') {
     actions.setWebpackConfig({
       devtool: false
-    });
+    })
   }
-};
+}
 
 /**
  * Here is the place where Gatsby creates schema customizations.
@@ -75,11 +75,11 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
   const postsPerPage = result.data.site.siteMetadata.postsPerPage
 
   // Load templates
-  const indexTemplate = require.resolve(`./src/templates/index.js`)
-  const tagsTemplate = require.resolve(`./src/templates/tag.js`)
-  const authorTemplate = require.resolve(`./src/templates/author.js`)
-  const pageTemplate = require.resolve(`./src/templates/page.js`)
-  const postTemplate = require.resolve(`./src/templates/post.js`)
+  const indexTemplate = require.resolve('./src/templates/index.js')
+  const tagsTemplate = require.resolve('./src/templates/tag.js')
+  const authorTemplate = require.resolve('./src/templates/author.js')
+  const pageTemplate = require.resolve('./src/templates/page.js')
+  const postTemplate = require.resolve('./src/templates/post.js')
 
   /**
   * Infinite Scroll
@@ -96,8 +96,8 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
   const tagIds = {}
   const authorIds = {}
 
-  function saveInfiniteScrollPost(post) {
-    const dir = `public/infiniteScroll/`
+  function saveInfiniteScrollPost (post) {
+    const dir = 'public/infiniteScroll/'
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir)
     }
@@ -166,8 +166,8 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
           nextPagePath: nextPagePath,
           // Infinite Scroll
           postIds: tagIds[node.slug],
-          cursor: 0,
-        },
+          cursor: 0
+        }
       })
     })
   })
@@ -213,8 +213,8 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
           nextPagePath: nextPagePath,
           // Infinite Scroll
           postIds: authorIds[node.slug],
-          cursor: 0,
-        },
+          cursor: 0
+        }
       })
     })
   })
@@ -231,27 +231,27 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
-        slug: node.slug,
-      },
+        slug: node.slug
+      }
     })
   })
 
   // Create post pages
-  const prevNodes = _.concat(_.drop(posts), [{ node: { slug: `` } }])
-  const nextNodes = _.concat([{ node: { slug: `` } }], _.dropRight(posts))
+  const prevNodes = _.concat(_.drop(posts), [{ node: { slug: '' } }])
+  const nextNodes = _.concat([{ node: { slug: '' } }], _.dropRight(posts))
 
   posts.forEach(({ node }, i) => {
     // Determine the routing structure from
     // Ghost CMS by analyzing the url field
     const url = resolveUrl(basePath, node.slug, node.url)
 
-    //total number of posts for primary tag
+    // total number of posts for primary tag
     let primaryTagCount = _.find(tags, function (t) {
       return node.primary_tag && t.node.slug === node.primary_tag.slug
     })
-    primaryTagCount = primaryTagCount
-      && primaryTagCount.node
-      && primaryTagCount.node.postCount !== null ? primaryTagCount.node.postCount : 0
+    primaryTagCount = primaryTagCount &&
+      primaryTagCount.node &&
+      primaryTagCount.node.postCount !== null ? primaryTagCount.node.postCount : 0
 
     createPage({
       path: url,
@@ -262,11 +262,11 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
         slug: node.slug,
         prev: prevNodes[i].node.slug,
         next: nextNodes[i].node.slug,
-        tag: node.primary_tag && node.primary_tag.slug || ``,
+        tag: node.primary_tag && node.primary_tag.slug || '',
         limit: 3,
         skip: 0,
-        primaryTagCount: primaryTagCount,
-      },
+        primaryTagCount: primaryTagCount
+      }
     })
   })
 
@@ -286,14 +286,14 @@ exports.createPages = async ({ graphql, actions }, themeOptions) => {
     // Infinite Scroll
     context: {
       postIds: indexIds,
-      cursor: 0,
-    },
+      cursor: 0
+    }
   })
 }
 
 // Plugins can access basePath with GraphQL query
 exports.sourceNodes = ({ actions: { createTypes, createNode } }, { routes = {} }) => {
-  const { basePath = `/` } = routes
+  const { basePath = '/' } = routes
 
   createTypes(`
     type GhostConfig implements Node {
@@ -302,19 +302,19 @@ exports.sourceNodes = ({ actions: { createTypes, createNode } }, { routes = {} }
   `)
 
   const ghostConfig = {
-    basePath: resolveUrl(basePath),
+    basePath: resolveUrl(basePath)
   }
 
   createNode({
     ...ghostConfig,
-    id: `gatsby-theme-try-ghost-config`,
+    id: 'gatsby-theme-try-ghost-config',
     parent: null,
     children: [],
     internal: {
-      type: `ghostConfig`,
+      type: 'ghostConfig',
       contentDigest: createContentDigest(ghostConfig),
       content: JSON.stringify(ghostConfig),
-      description: `Ghost Config`,
-    },
+      description: 'Ghost Config'
+    }
   })
 }

@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const DocumentHead = ({ site, className }) => (
   <Helmet>

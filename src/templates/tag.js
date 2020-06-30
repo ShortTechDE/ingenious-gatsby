@@ -1,5 +1,5 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 import { graphql } from 'gatsby'
 
 import { Layout, PostView, WaveHeader } from '../components/common'
@@ -27,9 +27,9 @@ const Tag = ({ data, location, pageContext }) => {
             />
             <Layout>
               <WaveHeader context={tag} additionalClasses="category">
-                <div class="content container">
-                  <h1 class="headline">{tag.name}</h1>
-                  {tag.description ? <aside class="bio">{tag.description}</aside> : null}
+                <div className="content container">
+                  <h1 className="headline">{tag.name}</h1>
+                  {tag.description ? <aside className="bio">{tag.description}</aside> : null}
                 </div>
               </WaveHeader>
               <PostView posts={posts} globalState={g} pageContext={pageContext} />

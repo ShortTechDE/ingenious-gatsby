@@ -24,7 +24,7 @@ const infiniteScroll = (posts) => {
     const id = post.id
     const filePath = `${dir}${id}.json`
     const dataToSave = JSON.stringify(post)
-    fs.writeFile(filePath, dataToSave, err => err && console.log(err))
+    fs.writeFile(filePath, dataToSave)
   }
 
   posts.forEach(({ node }) => {

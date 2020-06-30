@@ -1,17 +1,17 @@
-import React from 'react'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
+import React from 'react'
 import { Layout } from '../components/common'
 
 const NotFoundPage = () => (
   <Layout>
-    <header class="page-header error small">
-      <div class="content container">
-        <h1 class="headline">Seite nicht gefunden</h1>
+    <header className="page-header error small">
+      <div className="content container">
+        <h1 className="headline">Seite nicht gefunden</h1>
       </div>
-      <figure class="wave"></figure>
+      <figure className="wave"></figure>
     </header>
 
-    <section class="error container">
+    <section className="error container">
       <AniLink cover bg="#111111" direction="up" duration={1} to="/">Zurück zum Start</AniLink>
     </section>
   </Layout>
