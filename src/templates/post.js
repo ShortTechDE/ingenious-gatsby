@@ -40,10 +40,15 @@ const Post = ({ data, location }) => {
             </div>
             <h1 className="headline" data-sal="slide-up" data-sal-duration="1000" data-sal-easing="ease" data-sal-delay="100">{post.title}</h1>
             <div className="authors" data-sal="slide-up" data-sal-duration="800" data-sal-easing="ease" data-sal-delay="500">
-              von&ensp;
-              <AniLink cover bg="#111111" direction="up" duration={1} to={`/author/${post.primary_author.slug}/`}>
-                {post.primary_author.name}
-              </AniLink>
+              von&nbsp;
+              {post.authors.map((author, i) =>
+                <> 
+                  <AniLink cover bg="#111111" direction="up" duration={1} to={`/author/${author.slug}/`}>
+                    {author.name}
+                  </AniLink>
+                  {post.authors[i+1] ? <>&nbsp;&amp;&nbsp;</> : null}
+                </>
+              )}
             </div>
           </div>
         </WaveHeader>
