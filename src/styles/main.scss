@@ -209,7 +209,7 @@ nav#globalnav {
     }
 
     div.menu {
-      //float: right;
+      float: right;
 
       label.menuicon {
         @include hidden();
