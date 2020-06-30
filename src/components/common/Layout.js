@@ -69,7 +69,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 <span className="title">Allgemein</span>
                 <ul className="links">
                   <li className="entry">
-                    <a href="mailto:info@shorttech.de" target="_blank" className="link">Kontakt</a>
+                    <a href="&#x6D;&#x61;&#x69;&#x6C;&#x74;&#x6F;&#x3A;info&#x40;shorttech.de" target="_blank" className="link">Kontakt</a>
                   </li>
                   <li className="entry">
                     <AniLink cover bg="#111111" direction="up" duration={1} to="/branding/" className="link">Branding</AniLink>
