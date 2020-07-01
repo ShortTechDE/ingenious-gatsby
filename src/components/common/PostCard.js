@@ -6,7 +6,7 @@ import { ImgSharp } from '.'
 
 const PostCard = ({ post }) => {
   const url = `/${post.slug}/`
-  const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.thumbnail && post.featureImageSharp.thumbnail.fluid
+  const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.childImageSharp && post.featureImageSharp.childImageSharp.fluid
 
   return (
     <article className="article">

@@ -32,6 +32,8 @@ try {
 module.exports = {
   siteMetadata: siteConfig,
   plugins: [
+    // Use Preact instead of React
+    `gatsby-plugin-preact`,
     // Tracking with Fathom Lite
     {
       resolve: 'gatsby-plugin-fathom',
@@ -117,6 +119,21 @@ module.exports = {
         cacheResponse: true,
         verbose: siteConfig.verbose,
         severity: siteConfig.severity,
+      },
+    },
+    // rehypeeee
+    {
+      resolve: `gatsby-transformer-rehype`,
+      options: {
+        filter: node => (
+          node.internal.type === `GhostPost` ||
+          node.internal.type === `GhostPage`
+        ),
+        plugins: [
+          {
+            resolve: `gatsby-rehype-ghost-links`,
+          },
+        ],
       },
     },
     // Generate webmanifest for PWA
