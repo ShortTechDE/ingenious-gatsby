@@ -2,6 +2,13 @@ const fs = require(`fs`)
 
 /**
 * Infinite Scroll
+*
+* Record all possible postIds that can be shown for each page (unpaginated).
+* Infinite scroll will load more posts in the same order as given here.
+* Uses pageContext to pass this information along.
+*
+* Each post is saved in a JSON file, so it can be fetched upon request.
+*
 */
 
 const infiniteScroll = (enable, posts) => {
@@ -17,7 +24,7 @@ const infiniteScroll = (enable, posts) => {
     const id = post.id
     const filePath = `${dir}${id}.json`
     const dataToSave = JSON.stringify(post)
-    fs.writeFile(filePath, dataToSave, err => err && console.log(err)) // eslint-disable-line
+    fs.writeFile(filePath, dataToSave, err => err && console.log(err))
   }
 
   posts.forEach(({ node }) => {

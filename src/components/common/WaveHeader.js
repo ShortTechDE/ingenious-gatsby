@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 const WaveHeader = ({ context, children, additionalClasses }) => {
-  const localImage = context.featureImageSharp && context.featureImageSharp.large && context.featureImageSharp.large.fluid ||
-    context.coverImageSharp && context.coverImageSharp.large && context.coverImageSharp.large.fluid;
+  const localImage = context.featureImageSharp && context.featureImageSharp.childImageSharp && context.featureImageSharp.childImageSharp.fluid ||
+    context.coverImageSharp && context.coverImageSharp.childImageSharp && context.coverImageSharp.childImageSharp.fluid;
   const externalImage = context.feature_image || context.cover_image;
 
   return (

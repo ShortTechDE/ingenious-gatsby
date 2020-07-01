@@ -3,7 +3,7 @@ const _ = require(`lodash`)
 const { resolveUrl } = require(`./src/utils/routing`)
 const gatsbyNodeQuery = require(`./src/utils/gatsbyNodeQuery`)
 const paginate = require(`./src/utils/pagination`)
-const infiniteScroll = require(`./src/utils/infiniteScroll`)
+const infiniteScroll = require(`./src/utils/infiniteScrollGenerator`)
 const siteConfig = require('./siteConfig')
 const routes = require('./routesConfig')
 

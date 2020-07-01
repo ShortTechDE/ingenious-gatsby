@@ -22,7 +22,7 @@ const PostCard = ({ post }) => {
       </div>
       <AniLink cover bg="#111111" direction="up" duration={1} to={url} className="button dark">Lesen</AniLink>
     </article>
-    )
+  )
 }
 
 PostCard.propTypes = {

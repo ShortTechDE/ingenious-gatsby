@@ -1,5 +1,5 @@
 const gatsbyNodeQuery = `{
-  allGhostPost(sort: { fields: [featured, published_at], order: [DESC, DESC] }) {
+  allGhostPost(sort: { fields: [published_at], order: [DESC, DESC] }) {
     edges {
       node {
         # Main fields

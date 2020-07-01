@@ -61,8 +61,8 @@ const Post = ({ data, data: {next, prev}, location }) => {
         </section>
         <aside className="post-suggestions">
           <div className="container">
-            {next ? <PostSuggestion post={next} /> : null}
             {prev ? <PostSuggestion post={prev} /> : null}
+            {next ? <PostSuggestion post={next} /> : null}
           </div>
         </aside>
       </Layout>

@@ -13,10 +13,16 @@ class PostView extends React.Component {
     const {
       globalState: g,
       pageContext,
-      posts,
+      posts
     } = this.props
 
-    const items = (!g.isInitializing() ? g.getItems(pageContext) : posts)
+    const { iScrollEnabled } = pageContext
+    const items = (iScrollEnabled && !g.isInitializing() ? g.getItems(pageContext) : posts)
+
+    items.forEach(({ node }) => {
+      node.collectionPath = pageContext.collectionPath || (pageContext.collectionPaths && pageContext.collectionPaths[node.id])
+    })
+
     return (
       <>
         <main className="container overlap-with-header" id="content-view">
@@ -44,7 +50,7 @@ class PostView extends React.Component {
 PostView.propTypes = {
   globalState: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  posts: PropTypes.array.isRequired,
+  posts: PropTypes.array.isRequired
 }
 
 export default PostView

@@ -16,5 +16,7 @@ module.exports = {
 
   // Show more logs for debugging purposes (default: false)
   verbose: false,
-  severity: `info`
+  severity: `info`,
+
+  infiniteScroll: true
 }

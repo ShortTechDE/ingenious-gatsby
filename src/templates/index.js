@@ -8,12 +8,12 @@ import { Layout, PostView, WaveHeader } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 const Index = ({ data, location, pageContext }) => {
-  const posts = data.posts.edges
+  const posts = data.allGhostPost.edges
   const featuredPost = data.featured.edges || data.recent.edges
 
   return (
     <GlobalStateContext.Consumer> 
-      { g => {return (
+      {g => (
         <>
           <MetaData location={location} />
           <Layout>
@@ -26,57 +26,39 @@ const Index = ({ data, location, pageContext }) => {
             <PostView posts={posts} globalState={g} pageContext={pageContext} />
           </Layout>
         </>
-      )}}
+      )}
     </GlobalStateContext.Consumer>
   )
 }
 
 Index.propTypes = {
   data: PropTypes.shape({
-    posts: PropTypes.shape({
-      allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    featured: PropTypes.shape({
-      allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    recent: PropTypes.shape({
-      allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
+    allGhostPost: PropTypes.object.isRequired,
+    file: PropTypes.object,
   }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-  pageContext: PropTypes.object,
+  location: PropTypes.object.isRequired,
+  pageContext: PropTypes.object.isRequired,
 }
 
 export default Index
 
 export const pageQuery = graphql`
-  query GhostPostQuery($limit: Int!, $skip: Int!) {
-    posts: allGhostPost(
-      sort: { order: DESC, fields: [published_at] },
-      limit: $limit,
-      skip: $skip
+  query GhostPostQuery($postIds: [String!]!, $limit: Int!, $skip: Int!) {
+    allGhostPost(
+        filter: {id: {in: $postIds}, featured: {eq: false}},
+        limit: $limit,
+        skip: $skip,
+        sort: { fields: [published_at], order: [DESC, DESC] }
     ) {
       edges {
         node {
-          ...GhostPostFields
+          ...GhostPostFieldsForIndex
         }
       }
     }
     featured: allGhostPost(
       filter: {featured: {eq: true}},
       limit: 1,
-    ) {
-      edges {
-        node {
-          ...GhostPostFields
-        }
-      }
-    }
-    recent: allGhostPost(
-      sort: { order: DESC, fields: [published_at] },
-      limit: 1
     ) {
       edges {
         node {
