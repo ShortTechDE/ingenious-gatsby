@@ -5,7 +5,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
 
-import { Layout, PostSuggestion, WaveHeader } from '../components/common'
+import { Layout, PostSuggestion, WaveHeader, RenderContent } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
@@ -15,6 +15,8 @@ import { MetaData } from '../components/common/meta'
 const Post = ({ data, data: {next, prev}, location }) => {
   const post = data.ghostPost
   const readingTime = readingTimeHelper(post, {minute: 'Lesezeit: 1 Min.', minutes: 'Lesezeit: % Min.'})
+  const transformedHtml = post.childHtmlRehype && post.childHtmlRehype.html
+  const htmlAst = post.childHtmlRehype && post.childHtmlRehype.htmlAst
 
   return (
     <>
@@ -53,10 +55,7 @@ const Post = ({ data, data: {next, prev}, location }) => {
           </div>
         </WaveHeader>
         <section className="article container">
-          <div
-            className="content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <RenderContent htmlAst={htmlAst} html={transformedHtml || post.html} />
           <hr className="mobile-only" />
         </section>
         <aside className="post-suggestions">

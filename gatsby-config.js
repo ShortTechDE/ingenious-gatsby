@@ -96,18 +96,20 @@ module.exports = {
           node.ghostId === undefined
         ),
         verbose: true,
-        // Option to disable this module (default: false)
-        disable: false,
+        disable: false
       },
     }, {
       resolve: `gatsby-plugin-sharp`,
       options: {
         useMozJpeg: true,
         stripMetadata: true,
-        defaultQuality: 80,
+        defaultQuality: 80
       },
     }, {
-      resolve: `gatsby-transformer-sharp`
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        checkSupportedExtensions: true
+      }
     },
     // Source from Ghost instance (<3 styxlab)
     {
@@ -121,7 +123,7 @@ module.exports = {
         severity: siteConfig.severity,
       },
     },
-    // rehypeeee
+    // Rehype (<3 styxlab)
     {
       resolve: `gatsby-transformer-rehype`,
       options: {
@@ -131,7 +133,9 @@ module.exports = {
         ),
         plugins: [
           {
-            resolve: `gatsby-rehype-ghost-links`,
+            resolve: `gatsby-rehype-ghost-links`
+          }, {
+            resolve: `gatsby-rehype-inline-images`
           },
         ],
       },

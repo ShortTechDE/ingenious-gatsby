@@ -60,6 +60,7 @@
     "gatsby-plugin-sharp": "2.6.0",
     "gatsby-plugin-transition-link": "^1.18.0",
     "gatsby-rehype-ghost-links": "^1.5.0",
+    "gatsby-rehype-inline-images": "^1.4.0",
     "gatsby-source-filesystem": "2.3.0",
     "gatsby-transformer-rehype": "^1.7.1",
     "gatsby-transformer-sharp": "2.5.0",
