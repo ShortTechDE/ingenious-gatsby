@@ -169,7 +169,7 @@ const createCollection = (createOptions, data, templates, allTags, collectionPat
   // per collectionPath
   createPostPages(createOptions, data.posts, allTags, templates.post)
 
-  const { indexIds } = infiniteScroll(iScrollEnabled, data.posts)
+  const { indexIds } = infiniteScroll(iScrollEnabled, data.posts.filter(({ node }) => !node.featured))
   createIndexPage(createOptions, data.posts, indexIds, templates.index, collectionPath)
 }
 

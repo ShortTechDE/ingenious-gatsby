@@ -21,7 +21,7 @@ const infiniteScroll = (enable, posts) => {
     if (!fs.existsSync(dir)){
       fs.mkdirSync(dir)
     }
-    const id = post.id
+    const { id } = post
     const filePath = `${dir}${id}.json`
     const dataToSave = JSON.stringify(post)
     fs.writeFile(filePath, dataToSave, err => err && console.log(err))
@@ -42,19 +42,19 @@ const infiniteScroll = (enable, posts) => {
   })
 }
 
-const createIds = (node, tagIds, authorIds) => {
-  node.tags.forEach((tag) => {
+const createIds = ({ tags, authors, id }, tagIds, authorIds) => {
+  tags.forEach((tag) => {
     if (tagIds[tag.slug] === undefined) {
       tagIds[tag.slug] = []
     }
-    tagIds[tag.slug].push(node.id)
+    tagIds[tag.slug].push(id)
   })
 
-  node.authors.forEach((author) => {
+  authors.forEach((author) => {
     if (authorIds[author.slug] === undefined) {
       authorIds[author.slug] = []
     }
-    authorIds[author.slug].push(node.id)
+    authorIds[author.slug].push(id)
   })
 }
 
