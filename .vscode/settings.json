@@ -8,5 +8,6 @@
     "**/node_modules": true,
     "**/public": true,
     "**/yarn.lock": true
-  }
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
 }

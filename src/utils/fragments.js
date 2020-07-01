@@ -1,16 +1,5 @@
 import { graphql } from 'gatsby'
 
-/**
-* These so called fragments are the fields we query on each template.
-* A fragment make queries a bit more reuseable, so instead of typing and
-* remembering every possible field, you can just use
-*   ...GhostPostFields
-* for example to load all post fields into your GraphQL query.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/graphql-reference/#fragments
-*
-*/
-
 // Used for site config
 export const siteMetadataFields = graphql`
   fragment SiteMetadataFields on SiteSiteMetadata {
@@ -46,6 +35,17 @@ export const ghostTagFields = graphql`
     description
     meta_title
     meta_description
+
+    # ImgSharp
+    featureImageSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
   }
 `
 
@@ -62,22 +62,34 @@ export const ghostAuthorFields = graphql`
     website
     twitter
     facebook
+    meta_title
+    meta_description
 
-    # Image scraping
+    # ImgSharp
     coverImageSharp {
       base
-      large: childImageSharp {
-        fluid(maxWidth: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+    profileImageSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 400, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
   }
 `
 
-// Used for single posts
-export const ghostPostFields = graphql`
-  fragment GhostPostFields on GhostPost {
+/* eslint-disable camelcase */
+export const ghostPostFields_main = graphql`
+  fragment GhostPostFields_main on GhostPost {
     # Main fields
     id
     title
@@ -87,21 +99,6 @@ export const ghostPostFields = graphql`
     excerpt
     custom_excerpt
     visibility
-
-    # Image scraping and thumbnail creating
-    featureImageSharp {
-      base
-      thumbnail: childImageSharp {
-        fluid(maxHeight: 500) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-      large: childImageSharp {
-        fluid(maxWidth: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
 
     # Dates formatted
     created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
@@ -125,45 +122,17 @@ export const ghostPostFields = graphql`
 
     # Authors
     authors {
-      name
-      slug
-      bio
-      # email
-      profile_image
-      twitter
-      facebook
-      website
+      ...GhostAuthorFields
     }
     primary_author {
-      name
-      slug
-      bio
-      # email
-      profile_image
-      twitter
-      facebook
-      website
+      ...GhostAuthorFields
     }
-
     # Tags
     primary_tag {
-      name
-      slug
-      description
-      feature_image
-      meta_description
-      meta_title
-      visibility
+      ...GhostTagFields
     }
-    
     tags {
-      name
-      slug
-      description
-      feature_image
-      meta_description
-      meta_title
-      visibility
+      ...GhostTagFields
     }
 
     # Content
@@ -174,12 +143,56 @@ export const ghostPostFields = graphql`
     url
     canonical_url
     uuid
-    page
     codeinjection_foot
     codeinjection_head
     codeinjection_styles
     comment_id
     reading_time
+
+    # Newsletter
+    send_email_when_published
+    email_subject
+
+    # Transformed html
+    childHtmlRehype {
+      html
+      htmlAst
+      tableOfContents
+    }
+  }
+`
+
+export const ghostPostFields = graphql`
+  fragment GhostPostFields on GhostPost {
+    ...GhostPostFields_main
+
+    # ImgSharp
+    featureImageSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }    
+    }
+  }
+`
+
+export const ghostPostFieldsForIndex = graphql`
+  fragment GhostPostFieldsForIndex on GhostPost {
+    ...GhostPostFields_main
+
+    # ImgSharp
+    featureImageSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 500, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
   }
 `
 
@@ -195,16 +208,6 @@ export const ghostPageFields = graphql`
     custom_excerpt
     visibility
 
-    # Image scraping
-    featureImageSharp {
-      base
-      large: childImageSharp {
-        fluid(maxWidth: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-
     # Dates formatted
     created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
     published_at_pretty: published_at(formatString: "DD. MMMM YYYY")
@@ -227,44 +230,18 @@ export const ghostPageFields = graphql`
 
     # Authors
     authors {
-      name
-      slug
-      bio
-      # email
-      profile_image
-      twitter
-      facebook
-      website
+      ...GhostAuthorFields
     }
     primary_author {
-      name
-      slug
-      bio
-      # email
-      profile_image
-      twitter
-      facebook
-      website
+      ...GhostAuthorFields
     }
 
     # Tags
     primary_tag {
-      name
-      slug
-      description
-      feature_image
-      meta_description
-      meta_title
-      visibility
+      ...GhostTagFields
     }
     tags {
-      name
-      slug
-      description
-      feature_image
-      meta_description
-      meta_title
-      visibility
+      ...GhostTagFields
     }
 
     # Content
@@ -281,6 +258,24 @@ export const ghostPageFields = graphql`
     codeinjection_styles
     comment_id
     reading_time
+
+    # Transformed html
+    childHtmlRehype {
+      html
+      htmlAst
+      tableOfContents
+    }
+
+    # ImgSharp
+    featureImageSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
   }
 `
 
@@ -289,6 +284,7 @@ export const ghostSettingsFields = graphql`
   fragment GhostSettingsFields on GhostSettings {
     title
     description
+    url
     logo
     icon
     cover_image
@@ -299,6 +295,7 @@ export const ghostSettingsFields = graphql`
     codeinjection_head
     codeinjection_foot
     codeinjection_styles
+
     navigation {
       label
       url
@@ -306,6 +303,37 @@ export const ghostSettingsFields = graphql`
     secondary_navigation {
       label
       url
+    }
+
+    # ImgSharp
+    logoSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
+    iconSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+
+    coverImageSharp {
+      base
+      publicURL
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 80) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
     }
   }
 `

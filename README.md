@@ -45,7 +45,7 @@ yarn
 
 Start the development server. You now have a local frontend set up pulling content from our backend.
 ```
-gatsby develop
+yarn dev
 ```
 ## 🤝 Contributing
 ingenious-gatsby uses [gitmoji](https://gitmoji.carloscuesta.me/) for all commit messages:
