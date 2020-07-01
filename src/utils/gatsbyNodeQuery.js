@@ -1,48 +1,21 @@
-/* Fragment are not yet possible in gatsby-node.js */
-/* Further info 👉🏼 https://github.com/gatsbyjs/gatsby/issues/12155 */
-
 const gatsbyNodeQuery = `{
-  allGhostPost(sort: { order: DESC, fields: [published_at] }) {
+  allGhostPost(sort: { fields: [published_at], order: [DESC, DESC] }) {
     edges {
       node {
         # Main fields
         id
         title
         slug
-        url
         featured
         feature_image
         excerpt
         custom_excerpt
         visibility
-        
-        # Image scraping and thumbnail creating
-        featureImageSharp {
-          base
-          thumbnail: childImageSharp {
-            fluid(maxHeight: 500) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
-          large: childImageSharp {
-            fluid(maxWidth: 2000, quality: 90) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              sizes
-            }
-          }
-        }
-  
+
         # Dates formatted
-        created_at_pretty: created_at(formatString: "D MMM YYYY")
-        published_at_pretty: published_at(formatString: "D MMM YYYY")
-        updated_at_pretty: updated_at(formatString: "D MMM YYYY")
+        created_at_pretty: created_at(formatString: "DD. MMMM YYYY")
+        published_at_pretty: published_at(formatString: "DD. MMMM YYYY")
+        updated_at_pretty: updated_at(formatString: "DD. MMMM YYYY")
         
         # Dates unformatted
         created_at
@@ -58,18 +31,53 @@ const gatsbyNodeQuery = `{
         twitter_description
         twitter_image
         twitter_title
-
+        
         # Authors
         authors {
           name
           slug
           url
           bio
+          
           # email
+          cover_image
           profile_image
           twitter
           facebook
           website
+          
+          # ImgSharp
+          coverImageSharp {
+            base
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 2000, quality: 80) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+          
+          profileImageSharp {
+            base
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 400, quality: 80) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
         }
 
         primary_author {
@@ -78,10 +86,44 @@ const gatsbyNodeQuery = `{
           url
           bio
           # email
+          cover_image
           profile_image
           twitter
           facebook
           website
+
+          # ImgSharp
+          coverImageSharp {
+            base
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 2000, quality: 80) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+
+          profileImageSharp {
+            base
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 400, quality: 80) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
         }
 
         # Tags
@@ -94,7 +136,25 @@ const gatsbyNodeQuery = `{
           meta_description
           meta_title
           visibility
+
+          # ImgSharp
+          featureImageSharp {
+            base
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 2000, quality: 80) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
         }
+
         tags {
           name
           slug
@@ -104,6 +164,23 @@ const gatsbyNodeQuery = `{
           meta_description
           meta_title
           visibility
+
+          # ImgSharp
+          featureImageSharp {
+            base
+            publicURL
+            childImageSharp {
+              fluid(maxWidth: 2000, quality: 80) {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
         }
 
         # Content
@@ -114,12 +191,34 @@ const gatsbyNodeQuery = `{
         url
         canonical_url
         uuid
-        page
         codeinjection_foot
         codeinjection_head
         codeinjection_styles
         comment_id
         reading_time
+
+        # Transformed html
+        childHtmlRehype {
+          html
+          htmlAst
+          tableOfContents
+        }
+
+        # ImgSharp
+        featureImageSharp {
+          base
+          childImageSharp {
+            fluid(maxWidth: 500, quality: 80) {
+              base64
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
       }
     }
   }
@@ -152,7 +251,7 @@ const gatsbyNodeQuery = `{
       }
     }
   }
-
+  
   site {
     siteMetadata {
       postsPerPage

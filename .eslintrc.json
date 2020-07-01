@@ -23,7 +23,8 @@
     "strict": "off",
     "react/jsx-no-target-blank": "warn",
     "react/no-unused-prop-types": "off",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "indent": ["error", 2]
   },
   "settings": {
     "import/core-modules": []

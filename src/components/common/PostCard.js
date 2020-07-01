@@ -6,7 +6,7 @@ import { ImgSharp } from '.'
 
 const PostCard = ({ post }) => {
   const url = `/${post.slug}/`
-  const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.thumbnail && post.featureImageSharp.thumbnail.fluid
+  const fluidFeatureImg = post.featureImageSharp && post.featureImageSharp.childImageSharp && post.featureImageSharp.childImageSharp.fluid
 
   return (
     <article className="article">
@@ -22,7 +22,7 @@ const PostCard = ({ post }) => {
       </div>
       <AniLink cover bg="#111111" direction="up" duration={1} to={url} className="button dark">Lesen</AniLink>
     </article>
-    )
+  )
 }
 
 PostCard.propTypes = {

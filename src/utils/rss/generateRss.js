@@ -1,12 +1,14 @@
 const cheerio = require(`cheerio`)
 const tagsHelper = require(`@tryghost/helpers`).tags
 const _ = require(`lodash`)
-const packageJson = require(`../../../package.json`)
+const packageJson = require('../../../package.json')
 
 const generateItem = function generateItem(post) {
   const itemUrl = post.canonical_url || post.url
   const html = post.html || ``
   const htmlContent = cheerio.load(html, { decodeEntities: false, xmlMode: true })
+  const featureImgUrl = post.feature_image
+
   const item = {
     title: post.title,
     description: post.excerpt,
@@ -17,10 +19,10 @@ const generateItem = function generateItem(post) {
     author: post.primary_author ? post.primary_author.name : null,
     custom_elements: [],
   }
-  let imageUrl
 
-  if (post.feature_image) {
-    imageUrl = post.feature_image
+  let imageUrl
+  if (featureImgUrl) {
+    imageUrl = featureImgUrl
 
     // Add a media content tag
     item.custom_elements.push({
@@ -49,13 +51,12 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
   return {
     serialize: ({ query: { allGhostPost } }) => allGhostPost.edges.map(edge => Object.assign({}, generateItem(edge.node))),
     setup: ({ query: { allGhostSettings } }) => {
-      const siteTitle = allGhostSettings.edges[0].node.title || `No Title`
-      const siteDescription = allGhostSettings.edges[0].node.description || `No Description`
+      const siteTitle = allGhostSettings.edges[0].node.title || `Unbekannte Seite`
+      const siteDescription = allGhostSettings.edges[0].node.description || `Keine Beschreibung vorhanden`
       const feed = {
         title: siteTitle,
         description: siteDescription,
-        // generator: `Ghost ` + data.safeVersion,
-        generator: `ShortTech ${packageJson.version}`,
+        generator: `ShortTech - Powered by ${packageJson.name} v${packageJson.version}`,
         feed_url: `${siteConfig.siteUrl}/rss/`,
         site_url: `${siteConfig.siteUrl}/`,
         image_url: `${siteConfig.siteUrl}/${siteConfig.siteIcon}`,
@@ -72,47 +73,45 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
     query: `
       {
         allGhostPost(
-          sort: {order: DESC, fields: published_at}
+          sort: { fields: [featured, published_at], order: [DESC, DESC] }
         ) {
           edges {
-              node {
-                # Main fields
-                id
-                title
-                slug
-                featured
-                feature_image
-                # Dates unformatted
-                created_at
-                published_at
-                updated_at
-                # SEO
-                excerpt
-                meta_title
-                meta_description
-                # Authors
-                authors {
-                  name
-                }
-                primary_author {
-                  name
-                }
-                tags {
-                  name
-                  visibility
-                }
-                # Content
-                html
-                # Additional fields
-                url
-                canonical_url
+            node {
+              id
+              title
+              slug
+              featured
+              feature_image
+              created_at
+              published_at
+              updated_at
+              excerpt
+              meta_title
+              meta_description
+              authors {
+                name
               }
+              primary_author {
+                name
+              }
+              tags {
+                name
+                visibility
+              }
+              html
+
+              url
+              canonical_url
+              featureImageSharp {
+                publicURL
+              }
+            }
           }
         }
       }
     `,
     output: `/rss`,
-    title: `RSS Feed`,
+    title: `RSS-Feed`,
   }
 }
 

@@ -29,7 +29,7 @@ const DocumentHead = ({ site, className }) => (
 
 DocumentHead.propTypes = {
   site: PropTypes.object.isRequired,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
 }
 
 export default DocumentHead

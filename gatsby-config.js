@@ -1,9 +1,9 @@
 const path = require(`path`)
 
-const siteConfig = require(`./src/utils/siteConfig`)
+const siteConfig = require(`./siteConfig`)
 let ghostConfig
 
-const generateRSSFeed = require(`./src/utils/rss/generate-feed`)
+const generateRSSFeed = require(`./src/utils/rss/generateRss`)
 
 try {
   ghostConfig = require(`./.ghost`)
@@ -32,6 +32,8 @@ try {
 module.exports = {
   siteMetadata: siteConfig,
   plugins: [
+    // Use Preact instead of React
+    `gatsby-plugin-preact`,
     // Tracking with Fathom Lite
     {
       resolve: 'gatsby-plugin-fathom',
@@ -70,6 +72,14 @@ module.exports = {
       options: {
         lookup: [
           {
+            type: `GhostAuthor`,
+            imgTags: [`cover_image`, `profile_image`],
+          },
+          {
+            type: `GhostTag`,
+            imgTags: [`feature_image`],
+          },
+          {
             type: `GhostPost`,
             imgTags: [`feature_image`],
           },
@@ -78,12 +88,8 @@ module.exports = {
             imgTags: [`feature_image`],
           },
           {
-            type: `GhostAuthor`,
-            imgTags: [`cover_image`],
-          },
-          {
             type: `GhostSettings`,
-            imgTags: [`cover_image`],
+            imgTags: [`logo`, `icon`, `cover_image`],
           },
         ],
         exclude: node => (
@@ -93,16 +99,42 @@ module.exports = {
         // Option to disable this module (default: false)
         disable: false,
       },
+    }, {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: true,
+        stripMetadata: true,
+        defaultQuality: 80,
+      },
+    }, {
+      resolve: `gatsby-transformer-sharp`
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    // Source from Ghost instance
+    // Source from Ghost instance (<3 styxlab)
     {
-      resolve: `gatsby-source-ghost`,
-      options:
-        process.env.NODE_ENV === `development`
+      resolve: `jamify-source-ghost`,
+      options: {
+        ghostConfig: process.env.NODE_ENV === `development`
           ? ghostConfig.development
           : ghostConfig.production,
+        cacheResponse: true,
+        verbose: siteConfig.verbose,
+        severity: siteConfig.severity,
+      },
+    },
+    // rehypeeee
+    {
+      resolve: `gatsby-transformer-rehype`,
+      options: {
+        filter: node => (
+          node.internal.type === `GhostPost` ||
+          node.internal.type === `GhostPage`
+        ),
+        plugins: [
+          {
+            resolve: `gatsby-rehype-ghost-links`,
+          },
+        ],
+      },
     },
     // Generate webmanifest for PWA
     {
@@ -225,7 +257,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-force-trailing-slashes`,
     `gatsby-plugin-offline`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sass`
   ],
 }

@@ -4,6 +4,7 @@
     "wix.vscode-import-cost",
     "eamodio.gitlens",
     "kisstkondoros.vscode-gutter-preview",
-    "github.vscode-pull-request-github"
+    "github.vscode-pull-request-github",
+    "prisma.vscode-graphql"
   ]
 }

@@ -11,7 +11,8 @@ const PostList = ({ posts }) => {
         <div className="post-list-column" id="p31">
           {posts.filter(({ node }, i) => i % 3 === 3 - 3).map(({ node }, i) => (
             <PostCard key={node.id} post={node} />
-          ))}        </div>
+          ))}        
+        </div>
         <div className="post-list-column" id="p32">
           {posts.filter(({ node }, i) => i % 3 === 3 - 2).map(({ node }, i) => (
             <PostCard key={node.id} post={node} />
@@ -23,6 +24,7 @@ const PostList = ({ posts }) => {
           ))}
         </div>
       </div>
+
       <div className="post-list post-list--two" id="p2">
         <div className="post-list-column" id="p21">
           {posts.filter(({ node }, i) => i % 2 === 2 - 2).map(({ node }, i) => (
@@ -35,6 +37,7 @@ const PostList = ({ posts }) => {
           ))}
         </div>
       </div>
+
       <div className="post-list post-list--one" id="p1">
         {posts.map(({ node }) => (
           <PostCard key={node.id} post={node} />
@@ -45,7 +48,7 @@ const PostList = ({ posts }) => {
 }
 
 PostList.propTypes = {
-  posts: PropTypes.array,
+  posts: PropTypes.array.isRequired,
 }
 
 export default PostList
