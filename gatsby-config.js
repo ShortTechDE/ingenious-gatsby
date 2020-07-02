@@ -34,13 +34,15 @@ module.exports = {
   plugins: [
     // Use Preact instead of React
     `gatsby-plugin-preact`,
-    // Tracking with Fathom Lite
+    // Tracking with Ackee
     {
-      resolve: 'gatsby-plugin-fathom',
+      resolve: "gatsby-plugin-ackee-tracker",
       options: {
-        trackingUrl: 'analytics.shorttech.de',
-        siteId: 'FFBAU'
-      }
+        domainId: 'a0e87aec-7ab4-4c38-ae36-856690c0f227',
+        server: 'https://analytics.shorttech.de',
+        ignoreLocalhost: true,
+        detailed: true
+      },
     },
     // Animation/Transition plugins
     {
