@@ -1,7 +1,7 @@
 {
   "name": "ingenious-gatsby",
   "description": "The frontend that powers ShortTech. Made with lots of Pride, GraphQL and GatsbyJS.",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "license": "SEE LICENSE IN LICENSE",
   "author": "ShortTech <opensource@shorttech.de>",
   "contributors": [
