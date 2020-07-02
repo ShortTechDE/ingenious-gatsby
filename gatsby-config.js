@@ -34,13 +34,15 @@ module.exports = {
   plugins: [
     // Use Preact instead of React
     `gatsby-plugin-preact`,
-    // Tracking with Fathom Lite
+    // Tracking with Ackee
     {
-      resolve: 'gatsby-plugin-fathom',
+      resolve: "gatsby-plugin-ackee-tracker",
       options: {
-        trackingUrl: 'analytics.shorttech.de',
-        siteId: 'FFBAU'
-      }
+        domainId: 'a0e87aec-7ab4-4c38-ae36-856690c0f227',
+        server: 'https://analytics.shorttech.de',
+        ignoreLocalhost: true,
+        detailed: true
+      },
     },
     // Animation/Transition plugins
     {
@@ -96,18 +98,20 @@ module.exports = {
           node.ghostId === undefined
         ),
         verbose: true,
-        // Option to disable this module (default: false)
-        disable: false,
+        disable: false
       },
     }, {
       resolve: `gatsby-plugin-sharp`,
       options: {
         useMozJpeg: true,
         stripMetadata: true,
-        defaultQuality: 80,
+        defaultQuality: 80
       },
     }, {
-      resolve: `gatsby-transformer-sharp`
+      resolve: `gatsby-transformer-sharp`,
+      options: {
+        checkSupportedExtensions: true
+      }
     },
     // Source from Ghost instance (<3 styxlab)
     {
@@ -121,7 +125,7 @@ module.exports = {
         severity: siteConfig.severity,
       },
     },
-    // rehypeeee
+    // Rehype (<3 styxlab)
     {
       resolve: `gatsby-transformer-rehype`,
       options: {
@@ -131,7 +135,9 @@ module.exports = {
         ),
         plugins: [
           {
-            resolve: `gatsby-rehype-ghost-links`,
+            resolve: `gatsby-rehype-ghost-links`
+          }, {
+            resolve: `gatsby-rehype-inline-images`
           },
         ],
       },

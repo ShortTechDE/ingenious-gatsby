@@ -811,6 +811,8 @@ section.page-template {
 
     // images in different sizes as featured in koenig editor
     figure.kg-image-card {
+      border-radius: 10px;
+      overflow: hidden;
       margin-top: 2em;
       width: 110%;
       position: relative;
@@ -856,7 +858,6 @@ section.page-template {
       img.kg-image {
         width: 100%;
         height: auto;
-        border-radius: 10px;
       }
 
       &.kg-card-hascaption {
