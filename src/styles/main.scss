@@ -307,8 +307,7 @@ nav#globalnav {
           padding: 0 48px;
           height: auto;
           box-sizing: border-box;
-          overflow-x: hidden;
-          overflow-y: auto;
+          overflow: hidden;
           visibility: hidden;
           transition: visibility 0s linear 1s;
         }
