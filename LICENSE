@@ -1,16 +1,8 @@
-Copyright (c) 2016 - 2020, ShortTech
+Copyright (c) 2016 - 2022, ShortTech/Tobias Möritz and contributors
 
-Permission to use, copy, modify, and/or distribute this software is 
-EXCLUSIVELY granted to ShortTech. Third parties are ONLY allowed 
-to use, copy and/or modify this software for contributing to this software
-and/or other educational purposes. By contributing, you grant all rights
-of your contribution to ShortTech.
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Additionally, the software is provided "AS IS" and ShortTech disclaims
-all warranties with regard to this software including all implied warranties
-of merchantability and fitness, in no event shall the authors be liable 
-for any special, direct, indirect, or consequential damages or any
-damages whatsoever resulting from loss of use, data or profits, wheter 
-in an action of contract, negligence or other tortious action,
-airising out of or in connection with the use or performance of this
-software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
