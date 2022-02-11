@@ -12,6 +12,10 @@
 </h3>
 
 <p align="center">
+  The ShortTech project is sunset. ingenious-gatsby is unmaintained and will thus be released to the general public under MIT license. We hope you can learn from us, as much as we learned from open-source.
+ </p>
+ 
+<p align="center">
   ingenious-gatsby is the GatsbyJS and GraphQL-powered frontend that powers ShortTech. The site is generated and compiled by <a href="https://www.gatsbyjs.com/">Gatsby Cloud</a> and then served by <a href="https://netlify.com">Netlify</a>. On the backend site, ShortTech is powered by a headless <a href="https://ghost.org">Ghost</a> installation, which uses our <a href="https://github.com/shorttechde/headless-placeholder">headless-placeholder</a> theme to fix some bugs with e.g. Twitter cards, when the site is set to private.
 </p>
 <p align="center">
@@ -64,10 +68,6 @@ Thanks to all direct and indirect contributors! ❤️
 Parts of this frontend have been copied from and customized based on [Ghost](https://ghost.org/)'s own [gatsby-starter-ghost](https://github.com/TryGhost/gatsby-starter-ghost/), [gatsby-theme-try-ghost](https://github.com/styxlab/gatsby-theme-try-ghost/) by [styxlab](https://github.com/styxlab/) and [gatsby-starter-infinite-scroll](https://github.com/baobabKoodaa/gatsby-starter-infinite-scroll/) by [Atte Juvonen](https://github.com/baobabKoodaa/). Be sure to check out their works If you want to start through with a Gatsby-based Ghost blog and/or theme.
 
 ## 📄 License
-**Copyright (c) 2016 - 2020, ShortTech**
+**Copyright (c) 2016 - 2022, ShortTech/Tobias Möritz**
 
-Permission to use, copy, modify, and/or distribute this software is 
-***exclusively*** granted to ShortTech. Third parties are ***only*** allowed 
-to use, copy and/or modify this software for contributing to this software
-and/or other educational purposes. By contributing, you grant all rights
-of your contribution to ShortTech.
+Licensed under the [MIT license](./LICENSE) as of Feb 2022.
